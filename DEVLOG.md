@@ -16,6 +16,13 @@
 **What I Did:**
 - Scaling script attached to court prefab
 - gameObject called *prefabScaler*
+
+## 🗓️ 15-02-2026 
+
+**Time Spent:** ~ 2 hrs
+**What I Did:**
+- prefabs all got ready
+- racket follow camera script added 
 ---
 
 <!-- Keep adding entries as you work -->
