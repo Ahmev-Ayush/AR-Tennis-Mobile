@@ -20,6 +20,37 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 | `Assets/Pipelines`, `Settings`, `TextMesh Pro`, `XR`, `XRI` | Supporting render pipeline assets, volume profiles, fonts, and XR Interaction Toolkit configurations. |
 | `Build` | Auto-generated Burst debug data from previous builds (safe to delete if storage is a concern). |
 
+## Project Structure
+```text
+📦 YourProject/
+├── 📂 Assets/
+│   ├── 📂 Butterfly (Animated)/
+│   ├── 📂 MobileARTemplateAssets/
+│   │   ├── 📂 Materials/
+│   │   ├── 📂 Prefabs/
+│   │   ├── 📂 Scripts/     ← All scripts used in the project are here
+│   │   ├── 📂 Shaders/
+│   │   ├── 📂 Tutorial/
+│   │   └── 📂 UI/
+│   ├── 📂 Prefabs/         ← All prefabs are here that are used in the project
+│   ├── 📂 Resources/
+│   │   ├── 📂 Images/      
+│   │   └── 📂 Materials/   ← All Materials are here that are used in the project
+│   ├── 📂 Samples/
+│   ├── 📂 Settings/
+│   ├── 📂 Scenes/
+│   ├── 📂 TextMesh Pro/
+│   ├── 📂 XR/
+│   └── 📂 models/
+├── 📂 Docs/                  ← documentation lives here
+│   ├── 📂 screenshots/
+│   ├── 📂 gifs/
+├── 📄 .gitignore
+├── 📄 README.md
+├── 📄 project-structure.txt   
+└── 📄 DEVLOG.md               
+```
+
 ## Requirements
 - Unity Hub with **Unity 6000.2.6f2** plus Android  Build Support, OpenJDK, and SDK/NDK tools.
 - ARCore-device running Android 10+ .
