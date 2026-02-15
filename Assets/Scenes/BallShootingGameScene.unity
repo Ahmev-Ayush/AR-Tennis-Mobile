@@ -2062,7 +2062,7 @@ MonoBehaviour:
   defaultScaleFactorCourt: {x: 2, y: 1, z: 1}
   racketPrefab: {fileID: 1626392381}
   defaultScaleFactorRacket: 0.4
-  ballPrefab: {fileID: 1738700995}
+  ballPrefab: {fileID: 0}
   defaultScaleFactorBall: 0.01167
   rotateCourt: 90
   value_to_spawn_in_front: 6
@@ -2584,11 +2584,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676177218}
   m_CullTransparentMesh: 1
---- !u!1 &1738700995 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5799584800337431466, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-  m_PrefabInstance: {fileID: 2095484353}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1831774379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,75 +2853,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2.4, y: 9}
   m_SizeDelta: {x: 345.61, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &2095484353
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5799584800337431466, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_Name
-      value: Tennis_ball
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.01167
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.01167
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.01167
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216334023313805331, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2942,4 +2868,3 @@ SceneRoots:
   - {fileID: 1183664471}
   - {fileID: 341755700}
   - {fileID: 365770225}
-  - {fileID: 2095484353}
