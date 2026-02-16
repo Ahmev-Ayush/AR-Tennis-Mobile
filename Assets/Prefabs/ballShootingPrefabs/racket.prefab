@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6866774883410770169}
   - component: {fileID: 7023378766478985256}
   - component: {fileID: 5887106589817605311}
+  - component: {fileID: 4366429721027718910}
   m_Layer: 0
   m_Name: racket
-  m_TagString: Untagged
+  m_TagString: PlayerRacket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::racketFollow
   arCamera: {fileID: 0}
+  posOffset: {x: 0, y: -0.133, z: 0.23}
+  prefabScaleScript: {fileID: 0}
 --- !u!54 &7023378766478985256
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97,6 +100,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &4366429721027718910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535518260388983136}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.29, y: 0.08, z: 0.21}
+  m_Center: {x: -0.15, y: 0, z: 0}
 --- !u!1001 &5283994110463323212
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,6 +23,7 @@
 **What I Did:**
 - prefabs all got ready
 - racket follow camera script added 
+- ball launcher gameobject added
 ---
 
 <!-- Keep adding entries as you work -->
