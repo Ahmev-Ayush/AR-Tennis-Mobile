@@ -24,6 +24,15 @@
 - prefabs all got ready
 - racket follow camera script added 
 - ball launcher gameobject added
+
+
+## 🗓️ 17-02-2026 
+
+**Time Spent:** ~ 2 hrs
+**What I Did:**
+- fixing the scale of the court (ScaleFactor = 6)
+- random shooting of the ball in the court 
+- random in range (3.6 to 4)
 ---
 
 <!-- Keep adding entries as work -->

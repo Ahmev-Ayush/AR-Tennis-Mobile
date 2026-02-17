@@ -4,8 +4,8 @@ using UnityEngine;
 public class BallLauncher : MonoBehaviour
 {
     public GameObject ballPrefab;      // Prefab that must include a Rigidbody
-    public Transform targetDirection;  // Aim transform; usually the player or camera
-    public float shootForce = 5f;     // Impulse strength per shot
+    private Transform targetDirection;  // Aim transform; usually the player or camera
+    public float shootForce = 3.8f;     // Impulse strength per shot
     public float fireRate = 3f;        // Seconds between shots
     public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
@@ -29,8 +29,19 @@ public class BallLauncher : MonoBehaviour
         
         // Shoot toward the target with a slight upward arc for a lobbed trajectory.
         // Vector3 shotVector = (targetDirection.position - transform.position).normalized;
-        Vector3 shotVector = new Vector3(0, 0.4f, -1f); // Shoot straight forward in local space, ignoring target position for mobile AR template
-        rb.AddForce((shotVector + Vector3.up * 0.2f) * shootForce, ForceMode.Impulse);
+        // Vector3 shotVector = new Vector3(0, 0.4f, -1f); // Shoot straight forward in local space, ignoring target position for mobile AR template
+
+        // custom shooting in a range
+        Vector3 a = new Vector3(1.5f, 0.8f, -9f).normalized;
+        Vector3 b = new Vector3(-1.5f, 0.8f, -9f).normalized;
+        Vector3 shortVector = Vector3.Lerp(a, b, Random.value); // interpolate between a and b
+
+        // Add a small random upward component to the shot for variety, and apply the impulse force.
+        shootForce = Random.Range(3.6f, 3.85f); // randomize shoot force a bit for variety
+        Debug.Log($"Shooting ball with force {shootForce} toward {shortVector}");
+
+        // adding a small upward component to the shot for variety, and apply the impulse force.
+        rb.AddForce((shortVector + Vector3.up * 0.2f) * shootForce, ForceMode.Impulse);
 
         // Start watching this instance; destroy it if it falls below the cleanup height.
         StartCoroutine(DestroyWhenBelow(ball));

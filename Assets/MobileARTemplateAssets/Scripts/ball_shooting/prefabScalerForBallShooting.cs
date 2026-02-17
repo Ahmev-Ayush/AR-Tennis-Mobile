@@ -5,7 +5,7 @@ public class prefabScalerForBallShooting : MonoBehaviour
     // scaling factor with range from 0.1 to 10f
     [Header("Scaling Factor")]
     [Range(0.1f, 10f)]
-    public float scaleFactor = 1f;
+    public float scaleFactor = 6f;
     public float scaleStep = 0.5f; // step size for scaling the prefabs
 
     [Header("Court Settings")]
