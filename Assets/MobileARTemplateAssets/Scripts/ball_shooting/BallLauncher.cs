@@ -5,7 +5,7 @@ public class BallLauncher : MonoBehaviour
 {
     public GameObject ballPrefab;      // Prefab that must include a Rigidbody
     private Transform targetDirection;  // Aim transform; usually the player or camera
-    public float shootForce = 3.8f;     // Impulse strength per shot
+    public float shootForce = 2.8f;     // Impulse strength per shot
     public float fireRate = 3f;        // Seconds between shots
     public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
@@ -32,12 +32,12 @@ public class BallLauncher : MonoBehaviour
         // Vector3 shotVector = new Vector3(0, 0.4f, -1f); // Shoot straight forward in local space, ignoring target position for mobile AR template
 
         // custom shooting in a range
-        Vector3 a = new Vector3(1.5f, 0.8f, -9f).normalized;
-        Vector3 b = new Vector3(-1.5f, 0.8f, -9f).normalized;
+        Vector3 a = new Vector3(1f, 1.7f, -9f).normalized;
+        Vector3 b = new Vector3(-1f, 1.7f, -9f).normalized;
         Vector3 shortVector = Vector3.Lerp(a, b, Random.value); // interpolate between a and b
 
         // Add a small random upward component to the shot for variety, and apply the impulse force.
-        shootForce = Random.Range(3.6f, 3.85f); // randomize shoot force a bit for variety
+        shootForce = Random.Range(2.6f, 2.9f); // randomize shoot force a bit for variety
         Debug.Log($"Shooting ball with force {shootForce} toward {shortVector}");
 
         // adding a small upward component to the shot for variety, and apply the impulse force.
