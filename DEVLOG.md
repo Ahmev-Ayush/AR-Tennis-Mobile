@@ -33,6 +33,8 @@
 - fixing the scale of the court (ScaleFactor = 6)
 - random shooting of the ball in the court 
 - random in range (3.6 to 4)
+
+ - ISSUE : player not getting enough reaction time
 ---
 
 <!-- Keep adding entries as work -->

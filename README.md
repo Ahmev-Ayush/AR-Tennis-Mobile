@@ -7,9 +7,11 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 ## Feature Highlights
 - **Plane management UI** – `ARModeController` lets you toggle detection, hide planes, remove tracked planes, or delete spawned content while guarding other placement scripts through a shared `IsPlacementAllowed` flag.
 - **Multiple placement modes** – Use tap-to-place planes, drag-to-place gestures, or feature-point placement (`cloudpointToPlacePrefab`) for content that should cling to point clouds rather than surfaces.
+- **Onboarding goals** – `GoalManager` cycles through greeting, surface scanning, tap-to-place, and manipulation hint cards before enabling the creation menu.
 - **Image tracking pipeline** – `ImageTrackingManager` instantiates prefabs for each reference image at runtime and keeps them aligned while the target stays in view.
 - **Menu and debug overlays** – `ARTemplateMenuManager` and `ARDebugMenu` hook into XR Interaction Toolkit Starter Assets so you can spawn prefabs from a modal menu, toggle plane visuals, and surface debug sliders without writing extra UI glue.
 - **Performance HUD** – `PerformanceMonitor` streams memory and GPU timing data into a TextMeshPro label so you can benchmark directly on device.
+- **Ball shooting mini-game** – A lightweight tennis demo (`BallLauncher`, racket follow, scaling helpers, scene switcher) shows how to combine UI onboarding with AR placement for a casual interaction loop.
 - **Curated demo scenes** – The `Assets/Scenes` folder includes sample experiences (ScenePrime, ImageTrackingScene, carScene, BallShootingGameScene, Scene_Dragon, SceneTest) that showcase different interaction styles.
 
 ## Project Layout
@@ -69,9 +71,8 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 - **Android**: 
 	- Enable **ARM64** architecture with IL2CPP and strip unused managed code for smaller builds.
 	- Under **Project Settings → XR Plug-in Management**, enable **ARCore** for Android and ensure required permissions (camera) are checked.
-	- If you use feature-point placement, keep depth and point-cloud subsystems enabled in **AR Session Origin**:
-	- Enable **ARKit** plus **Requires ARKit support** in **XR Plug-in Management**.
-	- In Xcode, set the provisioning profile and add a usage description for camera access in `Info.plist`.
+	- If you use feature-point placement, keep depth and point-cloud subsystems enabled in **XR Origin**:
+
 
 ## Key Scripts & How to Extend
 | Script | Description | Extension Tips |
@@ -79,9 +80,29 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 | `Scripts/ARModeController.cs` | Centralizes UI toggles for plane detection, plane deletion, object removal, and placement gating. | Ensure your placed prefabs use the `PlacedObjects` layer so the removal raycasts work. Add more modes by mirroring the existing toggle pattern. |
 | `Scripts/TapToPlaceObject.cs` | Minimal tap-to-place behavior that raycasts against plane polygons and instantiates a prefab at the hit pose. | Swap the prefab at runtime or pool objects instead of instantiating per tap for performance. |
 | `Scripts/PlaceDragInScene.cs` | Supports dragging new content out of `ARRaycastManager.raycastPrefab`, useful for painting anchors along surfaces. | Adjust the `SetIsPlacingToFalseWithDelay` coroutine to control gesture responsiveness. |
+| `Scripts/PlaceDragInScene_NewInputSystem.cs` | New Input System version of drag-to-place that respects UI blocking and `IsPlacementAllowed`. | Keep `EventSystem` in the scene so UI hits short-circuit placement; tweak the delay to tune spam protection. |
 | `Scripts/cloudpointToPlacePrefab.cs` | Places or repositions a prefab on feature points with Enhanced Touch + mouse fallback. | Pair with depth-based visualization by switching `TrackableType.FeaturePoint` to `TrackableType.FeaturePoint | TrackableType.Depth`. |
 | `Scripts/ImageTrackingManager.cs` | Keeps a prefab dictionary synced with the tracked-image library and updates pose each frame. | Populate `prefabsToSpawn` in the Inspector in the same order as the XR Reference Image Library. Add pooling to avoid Instantiate/Destroy when tracking toggles. |
+| `Scripts/GoalManager.cs` | Drives the onboarding card flow (scan → place → hints), enabling the create/delete UI once steps are completed. | Hook into `ObjectSpawner.objectSpawned` to unlock additional goals or add skip buttons per step. |
 | `Scripts/PerformanceMonitor.cs` | Streams memory and GPU timings into a TextMeshProUGUI label via ProfilerRecorder. | Expose more metrics (CPU time, draw calls) by adding additional recorders in `OnEnable`. |
+| `Scripts/ARPlaneMeshVisualizerFader.cs` | Fades plane materials in/out for cleaner UX when toggling plane visuals from the debug slider. | Tie the `visualizeSurfaces` property to your own UI if you replace `ARDebugMenu`. |
+| `Scripts/ARTemplateMenuManager.cs` | Handles the create/delete button state, modal visibility, debug sliders, and plane visualization toggles. | Use `SetObjectToSpawn()` to force menu selections and extend `ClearAllObjects()` for custom cleanup. |
+| `Scripts/changeScene.cs` | Simple scene loader for the demo buttons (ScenePrime, carScene, ImageTrackingScene, PointCloudScene, Scene_Dragon, BallShootingGameScene). | Add your own scene-named methods or swap to `SceneManager.LoadSceneAsync` for smoother transitions. |
+| `Scripts/PlaceCarInScene.cs` | Center-of-screen placement that listens to Enhanced Touch finger-down events and orients the car toward the camera. | Swap the prefab for any large object; customize the placement indicator to convey scale/rotation. |
+| `Scripts/placeCarInScene.cs` | Input System + UI-aware car placement gated by `ARModeController.IsPlacementAllowed`; supports mouse clicks in Editor. | Extend `IsPointerOverUI` to include graphic raycasts if you add world-space UI. |
+| `Scripts/SimpleRotate.cs` | Continuously spins a transform on a chosen axis; used for lightweight prop motion. | Animate `speed` or axis at runtime for attention-grabbing pickups. |
+| `Scripts/ball_shooting/BallLauncher.cs` | Fires pooled balls in a random arc with cleanup once they fall below a threshold. | Replace the aim vector to target the camera or anchors; add pooling to avoid GC spikes. |
+| `Scripts/ball_shooting/prefabScalerForBallShooting.cs` | Scales court, racket, and ball prefabs together and repositions the court in front of the camera. | Bind the scale buttons to UI or clamp `scaleFactor` for your space. |
+| `Scripts/ball_shooting/racketFollow.cs` | Offsets the racket relative to the AR camera so it stays in view; offset grows with scale factor. | Tweak `posOffset` interpolation for left/right-hand bias. |
+| `Scripts/ball_shooting/StartUIInBallShootingScene.cs` | Manages the welcome/adjust panels for the ball scene. | Add additional setup steps (e.g., safety prompts) before dismissing UI. |
+| `Scripts/ball_shooting/tennisBall.cs` | Marks balls hit by the racket using a collision flag. | Use the flag to trigger scorekeeping or VFX on impact. |
+
+## Ball Shooting Mini-Game Flow
+- Launch flow: `StartUIInBallShootingScene` gates the welcome and adjust overlays before play begins.
+- Court setup: `prefabScalerForBallShooting` sizes the court/racket/ball prefabs and positions the court in front of the camera.
+- Racket tracking: `racketFollow` parents the racket offset to the AR camera and adjusts distance as the scale changes.
+- Firing loop: `BallLauncher` spawns physics balls on an interval; `tennisBall` tracks player hits for scoring or effects.
+- Scene entry: Use the buttons wired to `changeScene` to jump into `BallShootingGameScene` from the main menu.
 
 ## Working with Scenes
 - **ScenePrime** – default showcase scene combining plane toggles, menu controls, and placement scripts.
