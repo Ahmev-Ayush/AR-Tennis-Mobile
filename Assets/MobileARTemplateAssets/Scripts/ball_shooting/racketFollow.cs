@@ -17,7 +17,7 @@ public class racketFollow : MonoBehaviour
 
 
     // update vs lateupdate
-    void LateUpdate()
+    void FixedUpdate()
     {
         if(arCamera == null)
         {

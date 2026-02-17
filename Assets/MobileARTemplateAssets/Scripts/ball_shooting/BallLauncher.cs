@@ -5,7 +5,7 @@ public class BallLauncher : MonoBehaviour
 {
     public GameObject ballPrefab;      // Prefab that must include a Rigidbody
     public Transform targetDirection;  // Aim transform; usually the player or camera
-    public float shootForce = 15f;     // Impulse strength per shot
+    public float shootForce = 5f;     // Impulse strength per shot
     public float fireRate = 3f;        // Seconds between shots
     public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
@@ -29,7 +29,7 @@ public class BallLauncher : MonoBehaviour
         
         // Shoot toward the target with a slight upward arc for a lobbed trajectory.
         // Vector3 shotVector = (targetDirection.position - transform.position).normalized;
-        Vector3 shotVector = new Vector3(0,0, -1); // Shoot straight forward in local space, ignoring target position for mobile AR template
+        Vector3 shotVector = new Vector3(0, 0.4f, -1f); // Shoot straight forward in local space, ignoring target position for mobile AR template
         rb.AddForce((shotVector + Vector3.up * 0.2f) * shootForce, ForceMode.Impulse);
 
         // Start watching this instance; destroy it if it falls below the cleanup height.
