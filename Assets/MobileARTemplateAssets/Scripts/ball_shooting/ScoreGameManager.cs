@@ -13,7 +13,7 @@ public class ScoreGameManager : MonoBehaviour
     [Header("Game Stats")]
     public int score = 0;
     public int missed = 0;
-    public int maxMissed = 10; // Max misses before game over
+    public int maxMissed = 5; // Max misses before game over
     int highScore = 0;
 
     void Start()
@@ -60,6 +60,7 @@ public class ScoreGameManager : MonoBehaviour
         if (highScoreText != null)
         {
             highScoreText.text = "High Score: " + highScore;
+            highScoreText.color = (score >= highScore) ? Color.yellow : Color.white; // Highlight new high score
         }
 
         if(missed == maxMissed - 1)

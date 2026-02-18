@@ -38,10 +38,12 @@
 
  ## 🗓️ 18-02-2026 
 
-**Time Spent:** ~ 2 hrs
+**Time Spent:** ~ 3 hrs
 **What I Did:**
 - Scorecard added on screen
 - displays score, balls missed and high score
+- fixed and updated several settings and values
+- elastic collision made to semi elastic (bounciness 0.8 (80%))
 
 ---
 
