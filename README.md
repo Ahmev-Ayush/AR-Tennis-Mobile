@@ -25,6 +25,7 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 
 <img src="Demo_Videos/BallShooting_screenshot1.png" width="300" alt="App Screenshot">
 
+## Note: View demo videos: [Demo_Videos](./Demo_Videos)
 
 ## Project Layout
 | Folder | Purpose |
