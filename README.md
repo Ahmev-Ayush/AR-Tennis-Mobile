@@ -11,11 +11,9 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 - **ImageTrackingScene** – configured with a reference image library to test `ImageTrackingManager` and prefab spawning.
 <img src="Demo_Videos/imageTracking_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos/imageTracking_screenshot2.jpeg" width="300" alt="App Screenshot">
 - **PointCloudScene** – use to place a flying saucer prefab to interact with point cloud feature points.
-<img src="Demo_Videos/PointCloud_screenshot1.jpeg" width="300" alt="App Screenshot">
-<img src="Demo_Videos/PointCloud_screenshot2.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos/PointCloud_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos/PointCloud_screenshot2.jpeg" width="300" alt="App Screenshot">
 - **carScene** & **Scene_Dragon** – uses the car and dragon placement scripts to anchor a vehicle and dragon prefab on detected planes.
-<img src="Demo_Videos/PlaneDetection_screenshot1.jpeg" width="300" alt="App Screenshot">
-<img src="Demo_Videos/PlaneDetection_screenshot2.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos/PlaneDetection_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos/PlaneDetection_screenshot2.jpeg" width="300" alt="App Screenshot">
 <img src="Demo_Videos/PlaneDetection_screenshot3.jpeg" width="300" alt="App Screenshot">
 - **BallShootingGameScene**  – experimental playgrounds for physics interactions
 <img src="Demo_Videos/BallShooting_screenshot1.png" width="300" alt="App Screenshot">
