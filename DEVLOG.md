@@ -2,6 +2,8 @@
 
 - Devlog started on 11-02-2026
 
+## Working on Ball Shooting Scene 
+
 ## 🗓️ 09-02-2026 - 11-02-2026 — Creation of game objects
 
 **Time Spent:** ~2 hours
@@ -36,7 +38,7 @@
 
  - ISSUE : player not getting enough reaction time
 
- ## 🗓️ 18-02-2026 
+## 🗓️ 18-02-2026 
 
 **Time Spent:** ~ 3 hrs
 **What I Did:**

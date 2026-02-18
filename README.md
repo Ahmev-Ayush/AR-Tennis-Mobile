@@ -1,18 +1,26 @@
 # AR Learning (Unity AR foundation : ARCore)
 
+Prototype-ready AR Foundation project featuring fast plane detection, multi-mode placement (tap, drag, feature points), and a set of demo scenes: **ScenePrime** for the core flow, **ImageTrackingScene** for tracked prefabs, **PointCloudScene** for feature-point placement, **carScene** for vehicle anchoring, and mini-game playgrounds like **BallShootingGameScene** and **Scene_Dragon**. Great for showcasing interactions or bootstrapping an Android AR prototype.
+
 An AR Foundation sample focused on reliable plane detection, responsive placement controls, and lightweight diagnostics. The project targets Unity **6000.2.6f2** (Unity 6) and ships with XR Interaction Toolkit, ARCore XR Plug-in, and AR Foundation 6.2, making it a solid starting point for Android AR prototypes.
 
 Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 
-## Feature Highlights
-- **Plane management UI** – `ARModeController` lets you toggle detection, hide planes, remove tracked planes, or delete spawned content while guarding other placement scripts through a shared `IsPlacementAllowed` flag.
-- **Multiple placement modes** – Use tap-to-place planes, drag-to-place gestures, or feature-point placement (`cloudpointToPlacePrefab`) for content that should cling to point clouds rather than surfaces.
-- **Onboarding goals** – `GoalManager` cycles through greeting, surface scanning, tap-to-place, and manipulation hint cards before enabling the creation menu.
-- **Image tracking pipeline** – `ImageTrackingManager` instantiates prefabs for each reference image at runtime and keeps them aligned while the target stays in view.
-- **Menu and debug overlays** – `ARTemplateMenuManager` and `ARDebugMenu` hook into XR Interaction Toolkit Starter Assets so you can spawn prefabs from a modal menu, toggle plane visuals, and surface debug sliders without writing extra UI glue.
-- **Performance HUD** – `PerformanceMonitor` streams memory and GPU timing data into a TextMeshPro label so you can benchmark directly on device.
-- **Ball shooting mini-game** – A lightweight tennis demo (`BallLauncher`, racket follow, scaling helpers, scene switcher) shows how to combine UI onboarding with AR placement for a casual interaction loop.
-- **Curated demo scenes** – The `Assets/Scenes` folder includes sample experiences (ScenePrime, ImageTrackingScene, carScene, BallShootingGameScene, Scene_Dragon, SceneTest) that showcase different interaction styles.
+## Working with Scenes
+- **ScenePrime** – default showcase scene combining plane toggles, menu controls, and placement scripts.
+- **ImageTrackingScene** – configured with a reference image library to test `ImageTrackingManager` and prefab spawning.
+![App Screenshot](Demo_Videos\imageTracking_screenshot1.jpeg)
+![App Screenshot](Demo_Videos\imageTracking_screenshot2.jpeg)
+- **PointCloudScene** – use to place a flying saucer prefab to interact with point cloud feature points.
+![App Screenshot](Demo_Videos\PointCloud_screenshot1.jpeg)
+![App Screenshot](Demo_Videos\PointCloud_screenshot2.jpeg)
+- **carScene** & **Scene_Dragon** – uses the car and dragon placement scripts to anchor a vehicle and dragon prefab on detected planes.
+![App Screenshot](Demo_Videos\PlaneDetection_screenshot1.jpeg)
+![App Screenshot](Demo_Videos\PlaneDetection_screenshot2.jpeg)
+![App Screenshot](Demo_Videos\PlaneDetection_screenshot3.jpeg)
+- **BallShootingGameScene**  – experimental playgrounds for physics interactions
+![App Screenshot](Demo_Videos\BallShooting_screenshot1.jpeg)
+
 
 ## Project Layout
 | Folder | Purpose |
@@ -44,9 +52,11 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 │   ├── 📂 TextMesh Pro/
 │   ├── 📂 XR/
 │   └── 📂 models/
-├── 📂 Docs/                  ← documentation lives here
-│   ├── 📂 screenshots/
-│   ├── 📂 gifs/
+├── 📂 Packages/
+├── 📂 ProjectSettings/
+├── 📂 Demos/                  ← demos videos and screenshots
+│   ├── 📂 /
+│   ├── 📂 /
 ├── 📄 .gitignore
 ├── 📄 README.md
 ├── 📄 project-structure.txt   
@@ -103,13 +113,6 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 - Racket tracking: `racketFollow` parents the racket offset to the AR camera and adjusts distance as the scale changes.
 - Firing loop: `BallLauncher` spawns physics balls on an interval; `tennisBall` tracks player hits for scoring or effects.
 - Scene entry: Use the buttons wired to `changeScene` to jump into `BallShootingGameScene` from the main menu.
-
-## Working with Scenes
-- **ScenePrime** – default showcase scene combining plane toggles, menu controls, and placement scripts.
-- **ImageTrackingScene** – configured with a reference image library to test `ImageTrackingManager` and prefab spawning.
-- **PointCloudScene** – use to place a flying saucer prefab to interact with point cloud feature points.
-- **carScene** – uses the car placement scripts to anchor a vehicle prefab on detected planes.
-- **BallShootingGameScene**, **Scene_Dragon**, **SceneTest** – experimental playgrounds for physics interactions and alternative assets; ideal for extending the template.
 
 ## Performance Overlay
 1. Drop the **PerformanceMonitor** prefab (or add the script to an empty GameObject) inside your scene Canvas.
