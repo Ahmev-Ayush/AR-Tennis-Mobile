@@ -9,17 +9,17 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 ## Working with Scenes
 - **ScenePrime** – default showcase scene combining plane toggles, menu controls, and placement scripts.
 - **ImageTrackingScene** – configured with a reference image library to test `ImageTrackingManager` and prefab spawning.
-![App Screenshot](Demo_Videos/imageTracking_screenshot1.jpeg)
-![App Screenshot](Demo_Videos/imageTracking_screenshot2.jpeg)
+<img src="Demo_Videos/imageTracking_screenshot1.jpeg" width="400" alt="App Screenshot">
+<img src="Demo_Videos/imageTracking_screenshot2.jpeg" width="400" alt="App Screenshot">
 - **PointCloudScene** – use to place a flying saucer prefab to interact with point cloud feature points.
-![App Screenshot](Demo_Videos/PointCloud_screenshot1.jpeg)
-![App Screenshot](Demo_Videos/PointCloud_screenshot2.jpeg)
+<img src="Demo_Videos/PointCloud_screenshot1.jpeg" width="400" alt="App Screenshot">
+<img src="Demo_Videos/PointCloud_screenshot2.jpeg" width="400" alt="App Screenshot">
 - **carScene** & **Scene_Dragon** – uses the car and dragon placement scripts to anchor a vehicle and dragon prefab on detected planes.
-![App Screenshot](Demo_Videos/PlaneDetection_screenshot1.jpeg)
-![App Screenshot](Demo_Videos/PlaneDetection_screenshot2.jpeg)
-![App Screenshot](Demo_Videos/PlaneDetection_screenshot3.jpeg)
+<img src="Demo_Videos/PlaneDetection_screenshot1.jpeg" width="400" alt="App Screenshot">
+<img src="Demo_Videos/PlaneDetection_screenshot2.jpeg" width="400" alt="App Screenshot">
+<img src="Demo_Videos/PlaneDetection_screenshot3.jpeg" width="400" alt="App Screenshot">
 - **BallShootingGameScene**  – experimental playgrounds for physics interactions
-![App Screenshot](Demo_Videos/BallShooting_screenshot1.jpeg)
+<img src="Demo_Videos/BallShooting_screenshot1.png" width="400" alt="App Screenshot">
 
 
 ## Project Layout
