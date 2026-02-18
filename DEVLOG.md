@@ -35,6 +35,14 @@
 - random in range (3.6 to 4)
 
  - ISSUE : player not getting enough reaction time
+
+ ## 🗓️ 18-02-2026 
+
+**Time Spent:** ~ 2 hrs
+**What I Did:**
+- Scorecard added on screen
+- displays score, balls missed and high score
+
 ---
 
 <!-- Keep adding entries as work -->
