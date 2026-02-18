@@ -32,8 +32,8 @@ public class BallLauncher : MonoBehaviour
         // Vector3 shotVector = new Vector3(0, 0.4f, -1f); // Shoot straight forward in local space, ignoring target position for mobile AR template
 
         // custom shooting in a range
-        Vector3 a = new Vector3(1f, 1.8f, -9f).normalized;
-        Vector3 b = new Vector3(-1f, 1.8f, -9f).normalized;
+        Vector3 a = new Vector3(0.5f, 1.8f, -9f).normalized;
+        Vector3 b = new Vector3(-0.5f, 1.8f, -9f).normalized;
         Vector3 shortVector = Vector3.Lerp(a, b, Random.value); // interpolate between a and b
 
         // Add a small random upward component to the shot for variety, and apply the impulse force.
