@@ -78,4 +78,20 @@ public class ScoreGameManager : MonoBehaviour
         // Simple reset: reload the active scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    // for reset of high score, can be called from a UI button
+    public void ResetHighScore()
+    {
+        // Wipe all PlayerPrefs (including high score) - use with caution!
+        // PlayerPrefs.DeleteAll();
+
+        //Delete the saved high score from PlayerPrefs and reset the local variable, then update the UI
+        PlayerPrefs.DeleteKey("HighScore");
+
+        PlayerPrefs.Save();
+        highScore = 0;
+        UpdateUI();
+
+        Debug.Log("High score reset.");
+    }
 }

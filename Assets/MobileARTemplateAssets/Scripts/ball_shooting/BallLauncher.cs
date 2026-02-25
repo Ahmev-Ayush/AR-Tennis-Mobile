@@ -9,7 +9,8 @@ public class BallLauncher : MonoBehaviour
     public float fireRate = 3f;        // Seconds between shots
     public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
-    void Start()
+    // Start function changed to BeginGame so that called from Start Button
+    public void BeginGame()
     {
         // Start firing after a short delay and keep repeating on the interval.
         InvokeRepeating("SpawnBall", 2f, fireRate);

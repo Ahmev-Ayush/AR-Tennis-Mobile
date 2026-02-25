@@ -47,6 +47,13 @@
 - fixed and updated several settings and values
 - elastic collision made to semi elastic (bounciness 0.8 (80%))
 
+## 🗓️ 25-02-2026 
+
+**Time** 6 pm :  
+**What I Did:**
+- Fixed start shooting problem (fixed)
+- Reset High Score button added in adjustment panel
+
 ---
 
 <!-- Keep adding entries as work -->
