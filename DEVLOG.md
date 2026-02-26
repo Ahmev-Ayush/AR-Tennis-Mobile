@@ -6,7 +6,7 @@
 
 ## 🗓️ 09-02-2026 - 11-02-2026 — Creation of game objects
 
-**Time Spent:** ~2 hours
+**Time Spent:** ~2 hours 
 **What I Did:**
 - Created floor of court, ball and racket prefabs. 
 - Added rigidBody and necessary colliders to the gameObjects.
@@ -14,14 +14,14 @@
 
 ## 🗓️ 12-02-2026 
 
-**Time Spent:** ~
+**Time Spent:**  
 **What I Did:**
 - Scaling script attached to court prefab
 - gameObject called *prefabScaler*
 
 ## 🗓️ 15-02-2026 
 
-**Time Spent:** ~ 2 hrs
+**Time Spent:** ~ 2 hrs 
 **What I Did:**
 - prefabs all got ready
 - racket follow camera script added 
@@ -30,7 +30,7 @@
 
 ## 🗓️ 17-02-2026 
 
-**Time Spent:** ~ 2 hrs
+**Time Spent:** ~ 2 hrs 
 **What I Did:**
 - fixing the scale of the court (ScaleFactor = 6)
 - random shooting of the ball in the court 
@@ -40,7 +40,7 @@
 
 ## 🗓️ 18-02-2026 
 
-**Time Spent:** ~ 3 hrs
+**Time Spent:** ~ 3 hrs 
 **What I Did:**
 - Scorecard added on screen
 - displays score, balls missed and high score
@@ -53,6 +53,13 @@
 **What I Did:**
 - Fixed start shooting problem (fixed)
 - Reset High Score button added in adjustment panel
+
+
+## 🗓️ 26-02-2026 
+
+**Time** 6 pm :  
+**What I Did:**
+- 
 
 ---
 
