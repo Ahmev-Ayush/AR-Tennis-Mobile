@@ -46,7 +46,7 @@ public class SpawnCar : MonoBehaviour
         var rayHits = new List<ARRaycastHit>();
         if (raycastmanager.Raycast(touchPosition, rayHits, TrackableType.PlaneWithinPolygon))
         {
-            Vector2    hitPosePosition = rayHits[0].pose.position;
+            Vector3    hitPosePosition = rayHits[0].pose.position;
             Quaternion hitPoseRotation = rayHits[0].pose.rotation;
 
             Instantiate(raycastmanager.raycastPrefab, hitPosePosition, hitPoseRotation);
