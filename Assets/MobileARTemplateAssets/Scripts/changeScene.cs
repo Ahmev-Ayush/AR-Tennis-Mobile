@@ -32,6 +32,11 @@ public class changeScene : MonoBehaviour
     {
         SceneManager.LoadScene("BallShootingGameScene");
     }
+
+    public void LoadScene6()
+    {
+        SceneManager.LoadScene("6DaysScene");
+    }
     
     public void exitApp()
     {
