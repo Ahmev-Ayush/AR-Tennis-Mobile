@@ -20,6 +20,11 @@ public class placeCarInScene : MonoBehaviour
     private Pose placementPose;
     private bool placementPoseIsValid = false;
 
+        void Awake()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep; // Prevent screen dimming for mobile AR template
+    }
+
     private void OnEnable()
     {
         // Enable EnhancedTouch for mobile support

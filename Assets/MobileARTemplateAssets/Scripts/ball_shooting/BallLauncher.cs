@@ -9,6 +9,11 @@ public class BallLauncher : MonoBehaviour
     public float fireRate = 3f;        // Seconds between shots
     public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
+    void Awake()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep; // Prevent screen dimming for mobile AR template
+    }
+
     // Start function changed to BeginGame so that called from Start Button
     public void BeginGame()
     {

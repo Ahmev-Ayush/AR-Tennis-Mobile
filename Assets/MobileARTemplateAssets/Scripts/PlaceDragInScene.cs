@@ -9,6 +9,11 @@ public class PlaceDragInScene : MonoBehaviour
     [SerializeField] private ARRaycastManager raycastManager;
     bool isPlacing = false;
 
+        void Awake()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep; // Prevent screen dimming for mobile AR template
+    }
+
     // Update is called once per frame
     void Update()
     {
