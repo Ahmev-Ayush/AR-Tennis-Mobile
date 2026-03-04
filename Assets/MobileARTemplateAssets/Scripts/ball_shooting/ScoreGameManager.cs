@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.PlayerLoop;
 
 public class ScoreGameManager : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class ScoreGameManager : MonoBehaviour
     [Header("Game Stats")]
     public int score = 0;
     public int missed = 0;
-    public int maxMissed = 5; // Max misses before game over
+    public int maxMissed = 3; // Max misses before game over
     int highScore = 0;
 
     void Start()

@@ -2380,7 +2380,7 @@ MonoBehaviour:
   highScoreText: {fileID: 575865417}
   score: 0
   missed: 0
-  maxMissed: 5
+  maxMissed: 3
 --- !u!4 &1011746202
 Transform:
   m_ObjectHideFlags: 0
