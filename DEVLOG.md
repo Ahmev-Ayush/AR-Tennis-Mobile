@@ -66,7 +66,12 @@
 **What I Did:**
 - fixed screen timeout issue
 - add new scene to place Lambo car in real env. (for revision purpose)
-- 
+
+## 🗓️ 05-03-2026 
+ 
+**What I Did:**
+- video player (video texture added to Ball shooting scene)
+
 ---
 
 <!-- Keep adding entries as work -->
