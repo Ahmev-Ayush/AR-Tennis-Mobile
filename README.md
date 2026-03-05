@@ -10,28 +10,28 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 - **ScenePrime** – default showcase scene combining plane toggles, menu controls, and placement scripts.
 - **ImageTrackingScene** – configured with a reference image library to test `ImageTrackingManager` and prefab spawning.
 
-<img src="Demo_Videos/imageTracking_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos/imageTracking_screenshot2.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/imageTracking_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/imageTracking_screenshot2.jpeg" width="300" alt="App Screenshot">
 
-🎬 [Watch video 1 →](./Demo_Videos/imageTracking_video1.mp4) | [Watch video 2 →](./Demo_Videos/imageTracking_video2.mp4)
+🎬 [Watch video 1 →](./Demo_Videos_and_Images/imageTracking_video1.mp4) | [Watch video 2 →](./Demo_Videos_and_Images/imageTracking_video2.mp4)
 
 - **PointCloudScene** – use to place a flying saucer prefab to interact with point cloud feature points.
 
-<img src="Demo_Videos/PointCloud_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos/PointCloud_screenshot2.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/PointCloud_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/PointCloud_screenshot2.jpeg" width="300" alt="App Screenshot">
 
-🎬 [Watch video →](./Demo_Videos/PointCloudScene_video.mp4)
+🎬 [Watch video →](./Demo_Videos_and_Images/PointCloudScene_video.mp4)
 
 - **carScene** & **Scene_Dragon** – uses the car and dragon placement scripts to anchor a vehicle and dragon prefab on detected planes.
 
-<img src="Demo_Videos/PlaneDetection_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos/PlaneDetection_screenshot2.jpeg" width="300" alt="App Screenshot">
-<img src="Demo_Videos/PlaneDetection_screenshot3.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/PlaneDetection_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/PlaneDetection_screenshot2.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/PlaneDetection_screenshot3.jpeg" width="300" alt="App Screenshot">
 
 - **BallShootingGameScene** ⭐ — **Best scene in the repo.** A fully playable AR tennis mini-game: the court anchors to a real-world plane, balls fire automatically, and you hit them with a racket that follows your camera. Includes a live scoreboard, high-score persistence, and a reset button.
 
-<img src="Demo_Videos/BallShooting_screenshot1.png" width="300" alt="Ball Shooting Screenshot 1"> <img src="Demos/BallShooting_screenshot1.jpeg" width="300" alt="Ball Shooting Screenshot 2">
+<img src="Demo_Videos_and_Images/BallShooting_screenshot1.png" width="300" alt="Ball Shooting Screenshot 1"> <img src="Demo_Videos_and_Images/BallShooting_screenshot1.jpeg" width="300" alt="Ball Shooting Screenshot 2">
 
-🎬 **[Watch Ball Shooting gameplay →](./Demo_Videos/BallShooting_video.mp4)**
+🎬 **[Watch Ball Shooting gameplay →](./Demo_Videos_and_Images/BallShooting_video.mp4)**
 
-## Note: View demo videos: [Demo_Videos](./Demo_Videos)
+## Note: View demo videos: [Demo_Videos_and_Images](./Demo_Videos_and_Images)
 
 ## Project Layout
 | Folder | Purpose |
@@ -65,7 +65,7 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 │   └── 📂 models/
 ├── 📂 Packages/
 ├── 📂 ProjectSettings/
-├── 📂 Demos/                  ← demos videos and screenshots
+├── 📂 Demo_Videos_and_Images/                  ← demos videos and screenshots
 │   ├── 📂 /
 │   ├── 📂 /
 ├── 📄 .gitignore

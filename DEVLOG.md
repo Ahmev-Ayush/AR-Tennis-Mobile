@@ -71,6 +71,7 @@
  
 **What I Did:**
 - video player (video texture added to Ball shooting scene)
+- changed video player setting to play using URL (not video stored in app, cutting app size)
 
 ---
 
