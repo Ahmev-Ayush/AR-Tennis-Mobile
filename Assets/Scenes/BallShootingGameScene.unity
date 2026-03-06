@@ -776,9 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallLauncher
   ballPrefab: {fileID: 5799584800337431466, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
-  shootForce: 2.8
-  fireRate: 3
-  destroyBelowY: -5
+  DataContainer: {fileID: 11400000, guid: 220eb6b06902d464886665aa3484deca, type: 2}
 --- !u!1 &480357084
 GameObject:
   m_ObjectHideFlags: 0
@@ -4097,7 +4095,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: https://github.com/Ahmev-Ayush/AR-Learning/raw/refs/heads/master/Demo_Videos_and_Images/LamboCarScene_video.mp4
+  m_Url: https://github.com/Ahmev-Ayush/AR-Learning/raw/refs/heads/master/Demo_Videos_and_Images/lamboVideoWithAudio_video.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1

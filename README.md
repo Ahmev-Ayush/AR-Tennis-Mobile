@@ -33,14 +33,6 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 
 ## Note: View demo videos: [Demo_Videos_and_Images](./Demo_Videos_and_Images)
 
-## Project Layout
-| Folder | Purpose |
-| --- | --- |
-| `Assets/MobileARTemplateAssets` | Core scripts, prefabs, materials, and UI assets used across the demo scenes. |
-| `Assets/Scenes` | Ready-to-open Unity scenes covering plane placement, image tracking, vehicle placement, and mini-game prototypes. |
-| `Assets/Pipelines`, `Settings`, `TextMesh Pro`, `XR`, `XRI` | Supporting render pipeline assets, volume profiles, fonts, and XR Interaction Toolkit configurations. |
-| `Build` | Auto-generated Burst debug data from previous builds (safe to delete if storage is a concern). |
-
 ## Project Structure
 ```text
 📦 YourProject/
@@ -124,7 +116,7 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 | **Physics in AR** | Attaching Rigidbodies and colliders to AR-anchored objects; tuning bounciness (0.8) for realistic but playable ball bounce |
 | **Prefab Scaling** | Dynamically scaling anchored prefabs to match real-world size using `prefabScalerForBallShooting` |
 | **Camera-Follow UI** | Offsetting world-space objects from the AR camera transform for a reliable racket-tracking feel |
-| **Scriptable Objects** | Using `ItemData.cs` (ScriptableObject) to centralise game values and avoid magic numbers |
+| **Scriptable Objects** | Using `BallShootingScriptableObjectScript.cs` (ScriptableObject) to centralise game values and avoid magic numbers |
 | **New Input System** | Migrating from the legacy Input system to Unity's New Input System (`PlaceDragInScene_NewInputSystem.cs`) |
 | **Performance Monitoring** | Building a live FPS/memory overlay (`PerformanceMonitor.cs`) with TextMeshPro for on-device diagnostics |
 | **Scene Management** | Wiring multi-scene navigation with `changeScene.cs` and `GoalManager.cs` |

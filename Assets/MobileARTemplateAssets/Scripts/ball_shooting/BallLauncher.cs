@@ -5,9 +5,12 @@ public class BallLauncher : MonoBehaviour
 {
     public GameObject ballPrefab;      // Prefab that must include a Rigidbody
     private Transform targetDirection; // Aim transform; usually the player or camera
-    public float shootForce = 2.8f;    // Impulse strength per shot
-    public float fireRate = 3f;        // Seconds between shots
-    public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
+    // public float shootForce = 2.8f;    // Impulse strength per shot
+    // public float fireRate = 3f;        // Seconds between shots
+    // public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
+
+
+    public BallShootingScriptableObjectScript DataContainer; // ScriptableObject for configurable parameters
 
     void Awake()
     {
@@ -18,7 +21,7 @@ public class BallLauncher : MonoBehaviour
     public void BeginGame()
     {
         // Start firing after a short delay and keep repeating on the interval.
-        InvokeRepeating("SpawnBall", 2f, fireRate);
+        InvokeRepeating("SpawnBall", 2f, DataContainer.fireRate);
     }
 
     void SpawnBall()
@@ -46,11 +49,11 @@ public class BallLauncher : MonoBehaviour
         Vector3 shortVector = Vector3.Lerp(a, b, Random.value); // interpolate between a and b
 
         // Add a small random upward component to the shot for variety, and apply the impulse force.
-        shootForce = Random.Range(2.7f, 2.9f);                                   // randomize shoot force a bit for variety
-        Debug.Log($"Shooting ball with force {shootForce} toward {shortVector}");
+        DataContainer.shootForce = Random.Range(2.7f, 2.9f);                                   // randomize shoot force a bit for variety
+        Debug.Log($"Shooting ball with force {DataContainer.shootForce} toward {shortVector}");
 
         // adding a small upward component to the shot for variety, and apply the impulse force.
-        rb.AddForce((shortVector + Vector3.up * 0.2f) * shootForce, ForceMode.Impulse);
+        rb.AddForce((shortVector + Vector3.up * 0.2f) * DataContainer.shootForce, ForceMode.Impulse);
 
         // Start watching this instance; destroy it if it falls below the cleanup height.
         StartCoroutine(DestroyWhenBelow(ball));
@@ -61,7 +64,7 @@ public class BallLauncher : MonoBehaviour
     {
         while (ball != null)
         {
-            if (ball.transform.position.y < destroyBelowY)
+            if (ball.transform.position.y < DataContainer.destroyBelowY)
             {
                 Destroy(ball);
                 yield break;
