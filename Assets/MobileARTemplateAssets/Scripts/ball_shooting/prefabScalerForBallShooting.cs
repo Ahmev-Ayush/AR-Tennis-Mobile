@@ -9,22 +9,20 @@ public class prefabScalerForBallShooting : MonoBehaviour
     public float scaleStep = 0.5f; // step size for scaling the prefabs
 
     [Header("Court Settings")]
-    // court Game Object to scale
-    public GameObject CourtPrefab;
-    // default scale factor for the court
-    public Vector3 defaultScaleFactorCourt = new Vector3(2f, 1f, 1f);
+    public GameObject CourtPrefab; // court Game Object to scale
+    public Vector3 defaultScaleFactorCourt = new Vector3(2f, 1f, 1f); // default scale factor for the court
+
+    private Quaternion initialRotation; 
+    private Vector3 initialForward;
+    private Vector3 initialCameraPos;
 
     [Header("Racket Settings")]
-    // racket prefab to scale
-    public GameObject racketPrefab;
-    // default scale factor for the racket
-    public float defaultScaleFactorRacket = 0.4f;
+    public GameObject racketPrefab; // racket prefab to scale
+    public float defaultScaleFactorRacket = 0.4f; // default scale factor for the racket
 
     [Header("Ball Settings")]
-    // ball prefab to scale
-    public GameObject ballPrefab;
-    // default scale factor for the ball
-    public float defaultScaleFactorBall = 0.01167f;
+    public GameObject ballPrefab;     // ball prefab to scale
+    public float defaultScaleFactorBall = 0.01167f;     // default scale factor for the ball
 
     [Header("Court Rotation and Positioning")]
     public float rotateCourt = 90f; // rotation angle the court to face
@@ -40,7 +38,12 @@ public class prefabScalerForBallShooting : MonoBehaviour
     void Start()
     {
         UpdateScale();
-        PositionObjectInFront();
+
+        initialCameraPos = Camera.main.transform.position; // 1. Capture the position of the phone at the very start
+        initialForward   = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized; // 2. Capture the direction (flattened so it stays level)
+        initialRotation  = Quaternion.LookRotation(initialForward); // 3. Store that rotation
+
+        PositionObjectInFront(); // Position the court in front of the user at the start
     }
 
 
@@ -77,7 +80,7 @@ public class prefabScalerForBallShooting : MonoBehaviour
     void PositionObjectInFront()
     {
         // Position it 2 units in front of the camera
-        Vector3 spawnPos = Camera.main.transform.position + (Camera.main.transform.forward * value_to_spawn_in_front);
+        Vector3 spawnPos = initialCameraPos + (initialForward * value_to_spawn_in_front);
 
         // Optional: Keep it at a specific height (e.g., ground level)
         spawnPos.y = -1.0f; 
@@ -85,8 +88,9 @@ public class prefabScalerForBallShooting : MonoBehaviour
         CourtPrefab.transform.position = spawnPos;
 
         // Make the object look at the user, but stay upright
-        CourtPrefab.transform.LookAt(new Vector3(Camera.main.transform.position.x, CourtPrefab.transform.position.y, Camera.main.transform.position.z));
-        CourtPrefab.transform.Rotate(0, rotateCourt, 0); // Flip it to face the camera correctly
+        CourtPrefab.transform.position = spawnPos;
+        CourtPrefab.transform.rotation = initialRotation; 
+        CourtPrefab.transform.Rotate(0, rotateCourt, 0); // Rotate the court to face the user
     }
 
 }

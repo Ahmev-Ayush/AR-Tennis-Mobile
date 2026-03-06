@@ -40,4 +40,14 @@ public class VideoPlayerController : MonoBehaviour
         videoPlayer.Play(); // Automatically play the video once it's prepared
     }
 
+    // Call this function and pass a value between 0.0 and 1.0
+    public void SetVolume(float volume)
+    {
+        if (videoPlayer != null && videoPlayer.canSetDirectAudioVolume)
+        {
+            // 0 is mute, 1 is full volume
+            videoPlayer.SetDirectAudioVolume(0, volume); 
+            Debug.Log("Volume set to: " + volume);
+        }
+    }
 }

@@ -75,6 +75,11 @@
 - added script to control video Player
 - replaced cube with quad to play video on one side
 
+## 🗓️ 06-03-2026 
+ 
+**What I Did:**
+- learned and applied scriptable object to Ball Shooting Scene
+
 ---
 
 <!-- Keep adding entries as work -->
