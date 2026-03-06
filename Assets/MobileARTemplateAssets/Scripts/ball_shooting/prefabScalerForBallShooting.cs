@@ -1,7 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class prefabScalerForBallShooting : MonoBehaviour
 {
+    public ARRaycastManager raycastManager; // Reference to the ARRaycastManager for plane detection
+
     // scaling factor with range from 0.1 to 10f
     [Header("Scaling Factor")]
     [Range(0.1f, 10f)]
@@ -16,34 +23,89 @@ public class prefabScalerForBallShooting : MonoBehaviour
     private Vector3 initialForward;
     private Vector3 initialCameraPos;
 
+
     [Header("Racket Settings")]
-    public GameObject racketPrefab; // racket prefab to scale
+    public GameObject racketPrefab;               // racket prefab to scale
     public float defaultScaleFactorRacket = 0.4f; // default scale factor for the racket
 
     [Header("Ball Settings")]
-    public GameObject ballPrefab;     // ball prefab to scale
-    public float defaultScaleFactorBall = 0.01167f;     // default scale factor for the ball
+    public GameObject ballPrefab;                   // ball prefab to scale
+    public float defaultScaleFactorBall = 0.01167f; // default scale factor for the ball
 
     [Header("Court Rotation and Positioning")]
-    public float rotateCourt = 90f; // rotation angle the court to face
+    public float rotateCourt = -90f;              // rotation angle the court to face
     public float value_to_spawn_in_front = 6.0f; // distance in front of the camera to spawn the court
+
+    // Raycast hit results will be stored in this list
+    public bool isPlacing = false;                                          // flag to indicate if the court is being placed
+    private static List<ARRaycastHit> s_hits = new List<ARRaycastHit>();    // List to store raycast hits
 
     // on validate, update the scale of the court and racket prefabs
     public void OnValidate()
     {
         UpdateScale();
-        PositionObjectInFront();
+        // PositionObjectInFront();
     }
 
     void Start()
     {
         UpdateScale();
 
-        initialCameraPos = Camera.main.transform.position; // 1. Capture the position of the phone at the very start
-        initialForward   = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized; // 2. Capture the direction (flattened so it stays level)
-        initialRotation  = Quaternion.LookRotation(initialForward); // 3. Store that rotation
+        // initialCameraPos = Camera.main.transform.position; // 1. Capture the position of the phone at the very start
+        // initialForward   = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized; // 2. Capture the direction (flattened so it stays level)
+        // initialRotation  = Quaternion.LookRotation(initialForward); // 3. Store that rotation
 
-        PositionObjectInFront(); // Position the court in front of the user at the start
+        // PositionObjectInFront(); // Position the court in front of the user at the start
+    }
+
+    void Update()
+    {
+
+        if(isPlacing){
+            return; // If the court is already placed, we don't need to raycast anymore
+        }
+
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame && ARModeController.IsPlacementAllowed){
+            Vector2 screenCenter = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+
+            if(IsPointerOverUI(screenCenter)){
+                return;
+            }
+
+            if (raycastManager.Raycast(screenCenter, s_hits, TrackableType.PlaneWithinPolygon)){
+                Pose hitPose = s_hits[0].pose;
+
+                PlaceCourtOnPlane(hitPose);
+            }
+        }
+        else if(Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame && ARModeController.IsPlacementAllowed){
+            Vector2 screenCenter = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+            if(IsPointerOverUI(screenCenter)){
+                return;
+            }
+            if (raycastManager.Raycast(screenCenter, s_hits, TrackableType.PlaneWithinPolygon)){
+                Pose hitPose = s_hits[0].pose;
+
+                PlaceCourtOnPlane(hitPose);
+            }
+        }
+
+    }
+
+    void PlaceCourtOnPlane(Pose hitPose){
+        CourtPrefab.transform.position = hitPose.position;
+
+        Vector3 lookPos = Camera.main.transform.position - CourtPrefab.transform.position;
+        lookPos.y = 0; // keep the court upright
+        
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        CourtPrefab.transform.rotation = rotation;
+
+        CourtPrefab.transform.position = hitPose.position - (lookPos.normalized * value_to_spawn_in_front);
+
+        CourtPrefab.transform.Rotate(0, rotateCourt, 0); // Rotate the court to face the user
+
+        isPlacing = true; // Set the flag to indicate that the court has been placed
     }
 
 
@@ -91,6 +153,20 @@ public class prefabScalerForBallShooting : MonoBehaviour
         CourtPrefab.transform.position = spawnPos;
         CourtPrefab.transform.rotation = initialRotation; 
         CourtPrefab.transform.Rotate(0, rotateCourt, 0); // Rotate the court to face the user
+    }
+
+    private bool IsPointerOverUI(Vector2 screenPosition)
+    {
+        if (EventSystem.current == null) return false;
+
+        var eventData = new PointerEventData(EventSystem.current)
+        {
+            position = screenPosition
+        };
+
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results.Count > 0;
     }
 
 }

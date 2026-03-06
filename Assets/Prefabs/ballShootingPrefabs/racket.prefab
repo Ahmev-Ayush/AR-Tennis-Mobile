@@ -181,10 +181,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6408329203172130589, guid: 398954e2eb4e71a42b7ddedf690f61ab, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 65b979554a2cfb4468a08df50acdb878, type: 2}
     - target: {fileID: 919132149155446097, guid: 398954e2eb4e71a42b7ddedf690f61ab, type: 3}
       propertyPath: m_Name
       value: Racket
       objectReference: {fileID: 0}
+    - target: {fileID: 2806459809356882543, guid: 398954e2eb4e71a42b7ddedf690f61ab, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e89d4f95a7c1a4246a18ab2ca3cf27ee, type: 2}
+    - target: {fileID: 3336182266008515235, guid: 398954e2eb4e71a42b7ddedf690f61ab, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 65b979554a2cfb4468a08df50acdb878, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

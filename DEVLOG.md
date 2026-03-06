@@ -80,6 +80,12 @@
 **What I Did:**
 - learned and applied scriptable object to Ball Shooting Scene
 
+## 🗓️ 07-03-2026 
+ 
+**What I Did:**
+- Fixing of oriention issue of the court prefab in BallShootingScene (still not fixed)
+- Fixed the orientation issue by placing the court prefab on detected ground plan
+
 ---
 
 <!-- Keep adding entries as work -->
