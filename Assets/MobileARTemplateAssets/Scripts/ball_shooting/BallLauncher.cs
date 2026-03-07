@@ -12,7 +12,7 @@ public class BallLauncher : MonoBehaviour
     // public float fireRate = 3f;        // Seconds between shots
     // public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
-    public float maxSpreadAngleY = 4f; // Maximum angle for random spread in degrees
+    public float maxSpreadAngleY = 5f; // Maximum angle for random spread in degrees
     public float maxSpreadAngleX = 12f; // Maximum angle for random spread in degrees
 
     public BallShootingScriptableObjectScript DataContainer; // ScriptableObject for configurable parameters
@@ -56,9 +56,14 @@ public class BallLauncher : MonoBehaviour
 
         // custom shooting in a range 
         // Vector3 directionToCamera = (targetDirection.position - transform.position).normalized;
-        Quaternion spreadRotation = Quaternion.Euler(Random.Range(8f, maxSpreadAngleX), Random.Range(-maxSpreadAngleY, maxSpreadAngleY), 0);
 
-        Vector3 finalShotDirection = spreadRotation * directionToCamera;
+        Vector3 rightAxis = - Vector3.Cross(Vector3.up, directionToCamera).normalized;
+        // Vector3 upAxis    = Vector3.Cross(directionToCamera, rightAxis).normalized; // if ball launcher points straight up then use this
+
+        Quaternion pitch  = Quaternion.AngleAxis(Random.Range(maxSpreadAngleX-1, maxSpreadAngleX+1), rightAxis); // Random pitch
+        Quaternion yaw    = Quaternion.AngleAxis(Random.Range(-maxSpreadAngleY, maxSpreadAngleY), Vector3.up); // Random yaw
+
+        Vector3 finalShotDirection = yaw * pitch * directionToCamera;
 
         // Vector3 shortVector = Vector3.Lerp(a, b, Random.value); // interpolate between a and b
 
