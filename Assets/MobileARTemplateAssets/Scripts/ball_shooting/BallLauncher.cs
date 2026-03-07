@@ -4,11 +4,13 @@ using UnityEngine;
 public class BallLauncher : MonoBehaviour
 {
     public GameObject ballPrefab;      // Prefab that must include a Rigidbody
-    private Transform targetDirection; // Aim transform; usually the player or camera
+    public Transform targetDirection; // Aim transform; usually the player or camera
     // public float shootForce = 2.8f;    // Impulse strength per shot
     // public float fireRate = 3f;        // Seconds between shots
     // public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
+    public float maxSpreadAngleY = 5f; // Maximum angle for random spread in degrees
+    public float maxSpreadAngleX = 12f; // Maximum angle for random spread in degrees
 
     public BallShootingScriptableObjectScript DataContainer; // ScriptableObject for configurable parameters
 
@@ -42,18 +44,20 @@ public class BallLauncher : MonoBehaviour
         // Vector3 shotVector = (targetDirection.position - transform.position).normalized;
         // Vector3 shotVector = new Vector3(0, 0.4f, -1f); // Shoot straight forward in local space, ignoring target position for mobile AR template
 
-        // custom shooting in a range (between two direction vectors)
-        Vector3 a = new Vector3(0.5f,  1.8f, -9f).normalized;
-        Vector3 b = new Vector3(-0.5f, 1.8f, -9f).normalized;
+        // custom shooting in a range 
+        Vector3 directionToCamera = (targetDirection.position - transform.position).normalized;
+        Quaternion spreadRotation = Quaternion.Euler(Random.Range(8f, maxSpreadAngleX), Random.Range(-maxSpreadAngleY, maxSpreadAngleY), 0);
 
-        Vector3 shortVector = Vector3.Lerp(a, b, Random.value); // interpolate between a and b
+        Vector3 finalShotDirection = spreadRotation * directionToCamera;
+
+        // Vector3 shortVector = Vector3.Lerp(a, b, Random.value); // interpolate between a and b
 
         // Add a small random upward component to the shot for variety, and apply the impulse force.
-        DataContainer.shootForce = Random.Range(2.7f, 2.9f);                                   // randomize shoot force a bit for variety
-        Debug.Log($"Shooting ball with force {DataContainer.shootForce} toward {shortVector}");
+        DataContainer.shootForce = Random.Range(2.7f, 2.9f);                              // randomize shoot force a bit for variety
+        Debug.Log($"Shooting ball with force {DataContainer.shootForce} toward {finalShotDirection}");
 
         // adding a small upward component to the shot for variety, and apply the impulse force.
-        rb.AddForce((shortVector + Vector3.up * 0.2f) * DataContainer.shootForce, ForceMode.Impulse);
+        rb.AddForce((finalShotDirection + Vector3.up * 0.2f) * DataContainer.shootForce, ForceMode.Impulse);
 
         // Start watching this instance; destroy it if it falls below the cleanup height.
         StartCoroutine(DestroyWhenBelow(ball));

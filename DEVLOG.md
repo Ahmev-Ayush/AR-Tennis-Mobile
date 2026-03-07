@@ -85,6 +85,7 @@
 **What I Did:**
 - Fixing of oriention issue of the court prefab in BallShootingScene (still not fixed)
 - Fixed the orientation issue by placing the court prefab on detected ground plan
+- fixing shooting angle default close to player's start position 
 
 ---
 
