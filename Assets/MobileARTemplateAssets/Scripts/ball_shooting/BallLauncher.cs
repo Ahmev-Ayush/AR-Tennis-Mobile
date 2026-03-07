@@ -5,11 +5,14 @@ public class BallLauncher : MonoBehaviour
 {
     public GameObject ballPrefab;      // Prefab that must include a Rigidbody
     public Transform targetDirection; // Aim transform; usually the player or camera
+    private Vector3 directionToCamera; // Cached normalized direction to the camera for shooting
+    private bool directionRegistered = false; // Flag to ensure we only calculate direction once
+
     // public float shootForce = 2.8f;    // Impulse strength per shot
     // public float fireRate = 3f;        // Seconds between shots
     // public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
-    public float maxSpreadAngleY = 5f; // Maximum angle for random spread in degrees
+    public float maxSpreadAngleY = 4f; // Maximum angle for random spread in degrees
     public float maxSpreadAngleX = 12f; // Maximum angle for random spread in degrees
 
     public BallShootingScriptableObjectScript DataContainer; // ScriptableObject for configurable parameters
@@ -22,6 +25,13 @@ public class BallLauncher : MonoBehaviour
     // Start function changed to BeginGame so that called from Start Button
     public void BeginGame()
     {
+        if(!directionRegistered)
+        {
+            directionToCamera = (targetDirection.position - transform.position).normalized;
+            directionRegistered = true;
+        }
+        
+
         // Start firing after a short delay and keep repeating on the interval.
         InvokeRepeating("SpawnBall", 2f, DataContainer.fireRate);
     }
@@ -45,7 +55,7 @@ public class BallLauncher : MonoBehaviour
         // Vector3 shotVector = new Vector3(0, 0.4f, -1f); // Shoot straight forward in local space, ignoring target position for mobile AR template
 
         // custom shooting in a range 
-        Vector3 directionToCamera = (targetDirection.position - transform.position).normalized;
+        // Vector3 directionToCamera = (targetDirection.position - transform.position).normalized;
         Quaternion spreadRotation = Quaternion.Euler(Random.Range(8f, maxSpreadAngleX), Random.Range(-maxSpreadAngleY, maxSpreadAngleY), 0);
 
         Vector3 finalShotDirection = spreadRotation * directionToCamera;
