@@ -89,6 +89,12 @@
 - Fix: Update shooting logic to allow targeting near initial position of camera and in its direction 
 - Fix: final fix to the issue of shooting in vicinity of initial position direction of the camera
 
+
+## 🗓️ 08-03-2026 
+ 
+**What I Did:**
+- Added feature for player to choose whether they are standing or sitting while playing
+
 ---
 
 <!-- Keep adding entries as work -->

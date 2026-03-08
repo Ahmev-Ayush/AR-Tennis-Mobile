@@ -12,6 +12,9 @@ public class BallLauncher : MonoBehaviour
     // public float fireRate = 3f;        // Seconds between shots
     // public float destroyBelowY = -5f;  // Cleanup threshold for fallen balls
 
+    private bool _isStanding = false;
+
+
     public float maxSpreadAngleY = 4f; // Maximum angle for random spread in degrees
     public float maxSpreadAngleX = 12f; // Maximum angle for random spread in degrees
 
@@ -36,6 +39,17 @@ public class BallLauncher : MonoBehaviour
         InvokeRepeating("SpawnBall", 2f, DataContainer.fireRate);
     }
 
+    // Default posture is sitting (12f). Press the button to toggle to standing (14f) and back.
+
+    public void TogglePlayerPosture()
+    {
+        _isStanding = !_isStanding;
+        maxSpreadAngleX = _isStanding ? 14f : 12f;
+        maxSpreadAngleY = _isStanding ? 4.1f : 3.8f;
+        Debug.Log($"Player posture: {(_isStanding ? "Standing" : "Sitting")} — maxSpreadAngleX = {maxSpreadAngleX}");
+    }
+
+    // Spawns a single ball and applies an impulse force toward the target direction with some random spread.
     void SpawnBall()
     {
         GameObject ball = Instantiate(ballPrefab, transform.position, Quaternion.identity);
