@@ -44,8 +44,9 @@ public class BallLauncher : MonoBehaviour
     public void TogglePlayerPosture()
     {
         _isStanding = !_isStanding;
-        maxSpreadAngleX = _isStanding ? Random.Range(15.8f, 16.5f) : Random.Range(7.0f, 7.5f);
-        maxSpreadAngleY = _isStanding ? Random.Range( 3.8f, 4.1f ) : Random.Range(3.5f, 3.6f);
+        //                              Standing                   : // Sitting
+        maxSpreadAngleX = _isStanding ? Random.Range(15.8f, 16.2f) : Random.Range(5.8f, 6.0f); // vertical spread
+        maxSpreadAngleY = _isStanding ? Random.Range( 3.5f,  3.7f) : Random.Range(3.5f, 3.6f); // horizontal spread
         Debug.Log($"Player posture: {(_isStanding ? "Standing" : "Sitting")} — maxSpreadAngleX = {maxSpreadAngleX}");
     }
 

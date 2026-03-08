@@ -15,7 +15,14 @@ public class changeScene : MonoBehaviour
 
     public void LoadDefaultScene()
     {
-        SceneManager.LoadScene("ScenePrime");
+        if (Application.CanStreamedLevelBeLoaded("ScenePrime"))
+        {
+            SceneManager.LoadScene("ScenePrime");
+        }
+        else
+        {
+            exitApp();
+        }
     }
 
     public void LoadScene3()
