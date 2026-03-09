@@ -100,7 +100,16 @@
  
 **What I Did:**
 - Made Duplicate of BallShootingGameScene as BallShootingGameSceneExtension for experimenting more and keep original Scene safe
-- 
+
+
+## Working on Ball Shooting Scene Extension
+
+## 🗓️ 09-03-2026 
+ 
+**What I Did:**
+- Diegetic UI : Score Board display inside the world BallShootingGameSceneExtension
+
+
 ---
 
 <!-- Keep adding entries as work -->
