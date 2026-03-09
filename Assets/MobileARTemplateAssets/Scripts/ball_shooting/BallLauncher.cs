@@ -44,9 +44,9 @@ public class BallLauncher : MonoBehaviour
     public void TogglePlayerPosture()
     {
         _isStanding = !_isStanding;
-        //                              Standing                   : // Sitting
-        maxSpreadAngleX = _isStanding ? Random.Range(15.8f, 16.2f) : Random.Range(5.8f, 6.0f); // vertical spread
-        maxSpreadAngleY = _isStanding ? Random.Range( 3.5f,  3.7f) : Random.Range(3.5f, 3.6f); // horizontal spread
+        //              =  Standing (1.6 metres from ground level) : // Sitting (0.5 metres from ground level)
+        maxSpreadAngleX = _isStanding ? Random.Range(11.5f, 12.5f) : Random.Range(2.5f, 3.2f); // vertical spread
+        maxSpreadAngleY = _isStanding ? Random.Range( 3.5f,  3.7f) : Random.Range(2f, 3f); // horizontal spread
         Debug.Log($"Player posture: {(_isStanding ? "Standing" : "Sitting")} — maxSpreadAngleX = {maxSpreadAngleX}");
     }
 
@@ -73,10 +73,10 @@ public class BallLauncher : MonoBehaviour
         // Vector3 directionToCamera = (targetDirection.position - transform.position).normalized;
 
         Vector3 rightAxis = - Vector3.Cross(Vector3.up, directionToCamera).normalized;
-        // Vector3 upAxis    = Vector3.Cross(directionToCamera, rightAxis).normalized; // if ball launcher points straight up then use this
+        Vector3 upAxis    = Vector3.Cross(directionToCamera, rightAxis).normalized; // if ball launcher points straight up then use this
 
         Quaternion pitch  = Quaternion.AngleAxis(Random.Range(maxSpreadAngleX-1.2f, maxSpreadAngleX+0.5f), rightAxis); // Random pitch
-        Quaternion yaw    = Quaternion.AngleAxis(Random.Range(-maxSpreadAngleY, maxSpreadAngleY), Vector3.up); // Random yaw
+        Quaternion yaw    = Quaternion.AngleAxis(Random.Range(-maxSpreadAngleY, maxSpreadAngleY), upAxis); // Random yaw
 
         Vector3 finalShotDirection = yaw * pitch * directionToCamera;
         Debug.Log($"Calculated shot direction: {finalShotDirection} with pitch {pitch.eulerAngles.x} and yaw {yaw.eulerAngles.y}");

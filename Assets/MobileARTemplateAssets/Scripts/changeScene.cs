@@ -44,6 +44,11 @@ public class changeScene : MonoBehaviour
     {
         SceneManager.LoadScene("6DaysScene");
     }
+
+    public void BallShootingExtScene()
+    {
+        SceneManager.LoadScene("BallShootingGameSceneExtension");
+    }
     
     public void exitApp()
     {

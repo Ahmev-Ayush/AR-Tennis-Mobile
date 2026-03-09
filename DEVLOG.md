@@ -95,6 +95,12 @@
 **What I Did:**
 - Added feature for player to choose whether they are standing or sitting while playing
 
+
+## 🗓️ 09-03-2026 
+ 
+**What I Did:**
+- Made Duplicate of BallShootingGameScene as BallShootingGameSceneExtension for experimenting more and keep original Scene safe
+- 
 ---
 
 <!-- Keep adding entries as work -->
