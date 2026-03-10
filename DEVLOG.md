@@ -100,6 +100,7 @@
  
 **What I Did:**
 - Made Duplicate of BallShootingGameScene as BallShootingGameSceneExtension for experimenting more and keep original Scene safe
+- (Build Version 3.8.0)
 
 
 ## Working on Ball Shooting Scene Extension
@@ -108,7 +109,16 @@
  
 **What I Did:**
 - Diegetic UI : Score Board display inside the world BallShootingGameSceneExtension
+- (Build Version 4.0.0)
 
+
+## 🗓️ 10-03-2026 
+ 
+**What I Did:**
+- Detected planes visible and diable them (no longer visible) after court is set
+- Quad of court (ground) replaced with solid court
+- (Build Version 4.1.0)
+- Tutorial for beginner players
 
 ---
 

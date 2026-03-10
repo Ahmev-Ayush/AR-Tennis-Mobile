@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class prefabScalerForBallShooting : MonoBehaviour
 {
     public ARRaycastManager raycastManager; // Reference to the ARRaycastManager for plane detection
+    public ARPlaneManager planeManager; // Reference to the ARPlaneManager for managing detected planes
 
     // scaling factor with range from 0.1 to 10f
     [Header("Scaling Factor")]
@@ -106,6 +107,17 @@ public class prefabScalerForBallShooting : MonoBehaviour
         CourtPrefab.transform.Rotate(0, rotateCourt, 0); // Rotate the court to face the user
 
         isPlacing = true; // Set the flag to indicate that the court has been placed
+
+        SetAllPlanesActive(false); // Hide all detected planes after placing the court
+    }
+
+    // Utility function to set ALL detected planes active or inactive
+    void SetAllPlanesActive(bool value)
+    {
+        foreach(var plane in planeManager.trackables)
+        {
+            plane.gameObject.SetActive(value);
+        }
     }
 
 
