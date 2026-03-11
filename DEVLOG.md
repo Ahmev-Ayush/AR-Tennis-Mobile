@@ -120,6 +120,14 @@
 - (Build Version 4.1.0)
 - Tutorial for beginner players
 
+## 🗓️ 12-03-2026 
+ 
+**What I Did:**
+- Calculated the shooting of balls
+- (Build Version 4.2.0)
+
+
+
 ---
 
 <!-- Keep adding entries as work -->
