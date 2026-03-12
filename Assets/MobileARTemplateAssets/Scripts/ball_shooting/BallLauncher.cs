@@ -117,7 +117,7 @@ public class BallLauncher : MonoBehaviour
         float     x0      = CameraPos.y;                   // height of the camera
         // ---------------------------------
         float     vd = x0 - h;                             // vertical distance between detected plane and camera
-        x0 = x0 - vd; // adjust camera height to be relative to the plane, not the world origin
+        x0 = x0 - vd - 0.35f; // adjust camera height to be relative to the plane, not the world origin
         // ---------------------------------
         float     g       = Physics.gravity.y;             // gravity (negative value)
         Vector2 camHorizontal = new Vector2(CameraPos.x, CameraPos.z);                    // horizontal position of the camera

@@ -7,7 +7,7 @@ public class racketFollow : MonoBehaviour
 
     [Header("Settings from Image")]
     public Vector3 posOffset = new Vector3(0f, -0.133f, 0.23f); // Offset to position the racket in front of the camera
-    private Vector3 rotOffset = new Vector3(0f, 90f, -90);
+    private Vector3 rotOffset = new Vector3(0f, 90f, -100);
 
     [Header("prefabScaleScript")]
     public prefabScalerForBallShooting prefabScaleScript; // Reference to the prefabScalerForBallShooting script
