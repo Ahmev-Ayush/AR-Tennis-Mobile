@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 // Launches pooled balls toward a target direction at a fixed cadence.
 public class BallLauncher : MonoBehaviour
@@ -18,11 +19,17 @@ public class BallLauncher : MonoBehaviour
 
     public BallShootingScriptableObjectScript DataContainer; // ScriptableObject for configurable parameters
 
+    public TextMeshProUGUI debugText; // Optional UI element for displaying debug info in real-time
+
     void Awake()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep; // Prevent screen dimming for mobile AR template
     }
 
+    void Update()
+    {
+        UpdateDebugDisplay();
+    }
     // Start function changed to BeginGame so that called from Start Button
     public void BeginGame()
     {
@@ -108,13 +115,17 @@ public class BallLauncher : MonoBehaviour
         float     h       = transform.position.y;          // height of the ball launcher
         Vector3 CameraPos = targetDirection.position;      // position of camera
         float     x0      = CameraPos.y;                   // height of the camera
+        // ---------------------------------
+        float     vd = x0 - h;                             // vertical distance between detected plane and camera
+        x0 = x0 - vd; // adjust camera height to be relative to the plane, not the world origin
+        // ---------------------------------
         float     g       = Physics.gravity.y;             // gravity (negative value)
         Vector2 camHorizontal = new Vector2(CameraPos.x, CameraPos.z);                    // horizontal position of the camera
         Vector2 objHorizontal = new Vector2(transform.position.x, transform.position.z);  // horizontal position of the ball launcher
 
-        float distance = Vector2.Distance(camHorizontal, objHorizontal);  // horizontal distance to camera
-        float angle    = Random.Range(29.9f, 30.1f) * Mathf.Deg2Rad;      // random launch angle in radians
-        Debug.Log($"Calculated distance to camera: {distance}, using launch angle: {angle * Mathf.Rad2Deg} degrees");
+        float distance     = Vector2.Distance(camHorizontal, objHorizontal);  // horizontal distance to camera
+        float angle        = Random.Range(29.9f, 30.1f) * Mathf.Deg2Rad;      // random launch angle in radians
+        Debug.Log($"Calculated distance to camera: {distance}, vertical dist (plane→cam): {vd:F2}m, height {h}, using launch angle: {angle * Mathf.Rad2Deg} degrees");
 
         float dinominatorLength = 2 * (x0 - h - Mathf.Tan(angle) * distance) * Mathf.Pow(Mathf.Cos(angle), 2);
         float velocitySquared   = g * Mathf.Pow(distance, 2) / dinominatorLength;         // derived from projectile motion equations
@@ -143,6 +154,44 @@ public class BallLauncher : MonoBehaviour
 
         StartCoroutine(DestroyWhenBelow(ball));                         // Start watching this instance; destroy it if it falls below the cleanup height.
 
+    }
+
+    public void UpdateDebugDisplay()
+    {
+        if (debugText == null) return;
+
+        float   h             = transform.position.y;
+        Vector3 cameraPos     = targetDirection.position;
+        float   x0            = cameraPos.y;
+        float   g             = Physics.gravity.y;
+        Vector2 camHorizontal = new Vector2(cameraPos.x, cameraPos.z);
+        Vector2 objHorizontal = new Vector2(transform.position.x, transform.position.z);
+
+        float distance        = Vector2.Distance(camHorizontal, objHorizontal);
+        float verticalDist    = x0 - h;                                        // vertical distance between detected plane and camera
+        float angle           = 30f * Mathf.Deg2Rad;
+        x0 = x0 + verticalDist; // adjust camera height to be relative to the plane, not the world origin
+
+        float denominator     = 2 * (x0 - h - Mathf.Tan(angle) * distance) * Mathf.Pow(Mathf.Cos(angle), 2);
+        float velocitySquared = (denominator != 0) ? g * Mathf.Pow(distance, 2) / denominator : 0f;
+        float v0              = (velocitySquared > 0) ? Mathf.Sqrt(velocitySquared) : float.NaN;
+
+        Vector3    shotDirection = (cameraPos - transform.position).normalized;
+        Vector3    rightAxis     = -Vector3.Cross(Vector3.up, shotDirection).normalized;
+        Vector3    upAxis        =  Vector3.Cross(shotDirection, rightAxis).normalized;
+        Quaternion pitch         =  Quaternion.AngleAxis(angle * Mathf.Rad2Deg, rightAxis);
+        Vector3    finalDir      =  pitch * shotDirection;
+
+        string report = "<color=yellow>--- AR REALTIME DEBUG ---</color>\n";
+        report += $"Horizontal Dist: {distance:F2}m\n";
+        report += $"Launcher Y (h): {h:F2}m\n";
+        report += $"Camera Y (x0): {x0:F2}m\n";
+        report += $"Plane→Cam Vertical: {verticalDist:F2}m\n";
+        report += $"Calculated V0: {v0:F2} m/s\n";
+        report += $"Launch Vector: {finalDir:F2}\n";
+        report += $"Angle: {angle * Mathf.Rad2Deg:F2}°\n";
+        report += $"verticalDist: {verticalDist:F2}m\n";
+        debugText.text = report;
     }
 
     // Per-ball watcher that destroys the instance once it drops below the Y threshold.
