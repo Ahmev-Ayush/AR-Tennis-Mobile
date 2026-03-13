@@ -127,6 +127,14 @@
 - (Build Version 4.2.0)
 - Corrected Shooting Logic for Real world coordinate
 
+## 🗓️ 13-03-2026 
+ 
+**What I Did:**
+- Added offset of Camera height
+- Modified Ball shooting values 
+- Made Detection Zone child of court prefab
+- (Build Version 4.3.0)
+
 
 ---
 
