@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.ARFoundation;
 
 public class changeScene : MonoBehaviour
 {
+    [SerializeField] private ARSession arSession;
     public void LoadScene1()
     {
         SceneManager.LoadScene("Scene_Dragon");
@@ -59,6 +61,12 @@ public class changeScene : MonoBehaviour
     public void restartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        resetExperience();
+    }
+
+    public void resetExperience()
+    {
+        arSession.Reset();
     }
 
 
