@@ -135,6 +135,12 @@
 - Made Detection Zone child of court prefab
 - (Build Version 4.3.0)
 
+## 🗓️ 15-03-2026 
+ 
+**What I Did:**
+- updated README.md
+<!-- - Added Demo video clips and More Screenshots of the application -->
+
 
 ---
 

@@ -1,13 +1,32 @@
-﻿# AR Learning (Unity AR foundation : ARCore)
+﻿# AR Tennis Mobile (Unity AR foundation : ARCore)
 
-Prototype-ready AR Foundation project featuring fast plane detection, multi-mode placement (tap, drag, feature points), and a set of demo scenes: **ScenePrime** for the core flow, **ImageTrackingScene** for tracked prefabs, **PointCloudScene** for feature-point placement, **carScene** for vehicle anchoring, and mini-game playgrounds like **BallShootingGameScene** and **Scene_Dragon**. Great for showcasing interactions or bootstrapping an Android AR prototype.
+## 🎾 Main Highlight: AR Tennis (Ball Shooting Game)
+The centerpiece of this repository is **BallShootingGameScene** (and its extended version `BallShootingGameSceneExtension`). 
+
+This is a fully playable **AR Tennis** mini-game where:
+- A tennis court anchors to the detected ground plane.
+- An automated ball launcher shoots physics-based balls at the player.
+- The player uses their phone as a racket (camera-tracked) to hit balls back.
+- **Features:** Live scoreboard, high-score persistence, video playback on screens, and reset functionality.
+
+It demonstrates advanced AR interaction, physics, camera tracking, and game logic integration to build a complete AR mini-game.
+
+## 📂 Also See: Core AR Demos
+Beyond the game, this project safeguards a suite of focused demos for learning specific AR Foundation features:
+
+- **ScenePrime** – The core playground for **Plane Detection**. Includes multi-mode placement (Tap to Place, Drag to Move/Rotate) and debug visualizations.
+- **ImageTrackingScene** – Demonstrates **Image Tracking**. Uses a reference library to detect physical images and spawn matching prefabs.
+- **PointCloudScene** – Shows how to use **Point Clouds** (Feature Points) for placement when planar surfaces aren't available.
+- **carScene** & **Scene_Dragon** – Examples of anchoring specific objects (Car, Dragon) to detected planes using specialized placement scripts.
+- **6daysScene** – A high-fidelity showcase for placing a detailed car model (Lamborghini) on planes.
+
+---
+
+Repo URL : [AR-Tennis-Mobile](https://github.com/Ahmev-Ayush/AR-Tennis-Mobile.git)
 
 An AR Foundation sample focused on reliable plane detection, responsive placement controls, and lightweight diagnostics. The project targets Unity **6000.2.6f2** (Unity 6) and ships with XR Interaction Toolkit, ARCore XR Plug-in, and AR Foundation 6.2, making it a solid starting point for Android AR prototypes.
 
-Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
-
-## Working with Scenes
-- **ScenePrime** – default showcase scene combining plane toggles, menu controls, and placement scripts.
+## Demo Visuals
 - **ImageTrackingScene** – configured with a reference image library to test `ImageTrackingManager` and prefab spawning.
 
 <img src="Demo_Videos_and_Images/imageTracking_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/imageTracking_screenshot2.jpeg" width="300" alt="App Screenshot">
@@ -25,7 +44,11 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 <img src="Demo_Videos_and_Images/PlaneDetection_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/PlaneDetection_screenshot2.jpeg" width="300" alt="App Screenshot">
 <img src="Demo_Videos_and_Images/PlaneDetection_screenshot3.jpeg" width="300" alt="App Screenshot">
 
-- **BallShootingGameScene** ⭐ — **Best scene in the repo.** A fully playable AR tennis mini-game: the court anchors to a real-world plane, balls fire automatically, and you hit them with a racket that follows your camera. Includes a live scoreboard, high-score persistence, and a reset button.
+- **6daysScene** – A dedicated scene for placing a high-fidelity car model (Lamborghini) on detected planes, showcasing refined placement logic.
+
+- **BallShootingGameScene** ⭐ — **Best scene in the repo.** A fully playable AR tennis mini-game: the court anchors to a real-world plane, balls fire automatically, and you hit them with a racket that follows your camera.
+  - **Features:** Live scoreboard, high-score persistence, reset functionality.
+  - **Recent Updates:** Integrated video playback on court screens (via URL), improved court orientation logic, and experimental standing/sitting posture adjustments.
 
 <img src="Demo_Videos_and_Images/BallShooting_screenshot1.png" width="300" alt="Ball Shooting Screenshot 1"> <img src="Demo_Videos_and_Images/BallShooting_screenshot1.jpeg" width="300" alt="Ball Shooting Screenshot 2">
 
@@ -68,7 +91,7 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 
 ## Requirements
 - Unity Hub with **Unity 6000.2.6f2** plus Android  Build Support, OpenJDK, and SDK/NDK tools.
-- ARCore-device running Android 10+ .
+- ARCore-compatible device running **Android 11 (API level 30)** or higher.
 - USB debugging enabled (Android).
 - Optional: TextMeshPro Essentials imported (already configured in this project) for the diagnostics overlay.
 
@@ -91,6 +114,7 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 - Court setup: `prefabScalerForBallShooting` sizes the court/racket/ball prefabs and positions the court in front of the camera.
 - Racket tracking: `racketFollow` parents the racket offset to the AR camera and adjusts distance as the scale changes.
 - Firing loop: `BallLauncher` spawns physics balls on an interval; `tennisBall` tracks player hits for scoring or effects.
+- Video Playback: `VideoPlayerController` streams video content on court screens via URL to keep the build size low.
 - Scene entry: Use the buttons wired to `changeScene` to jump into `BallShootingGameScene` from the main menu.
 
 ## Performance Overlay
@@ -120,6 +144,8 @@ Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 | **New Input System** | Migrating from the legacy Input system to Unity's New Input System (`PlaceDragInScene_NewInputSystem.cs`) |
 | **Performance Monitoring** | Building a live FPS/memory overlay (`PerformanceMonitor.cs`) with TextMeshPro for on-device diagnostics |
 | **Scene Management** | Wiring multi-scene navigation with `changeScene.cs` and `GoalManager.cs` |
+| **Video Playback** | Integrating `VideoPlayer` to stream video textures on 3D objects via URL (`VideoPlayerController.cs`) |
+| **Spatial UI** | Implementing world-space UI (e.g., the scoreboard in `BallShootingGameSceneExtension`) that exists physically in the AR environment instead of a screen overlay |
 
 
 
