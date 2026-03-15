@@ -455,6 +455,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 784983972108316821, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 923534440748978696, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 950400309715954080, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1587352102555726519, guid: aaca9f8717950314a99a24355727b318, type: 3}
       propertyPath: gameManager
       value: 
@@ -463,13 +475,21 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1011746201}
+    - target: {fileID: 3123462139137102094, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684268210609057664, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347058405711078241, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5051261831139218184, guid: aaca9f8717950314a99a24355727b318, type: 3}
       propertyPath: m_Name
       value: court
-      objectReference: {fileID: 0}
-    - target: {fileID: 5220768461090497536, guid: aaca9f8717950314a99a24355727b318, type: 3}
-      propertyPath: debugText
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5220768461090497536, guid: aaca9f8717950314a99a24355727b318, type: 3}
       propertyPath: targetDirection
@@ -515,10 +535,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6846289250788229425, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7462389558384208928, guid: aaca9f8717950314a99a24355727b318, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1011746201}
+    - target: {fileID: 8074230637355197030, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8973139413761982270, guid: aaca9f8717950314a99a24355727b318, type: 3}
       propertyPath: gameManager
       value: 
@@ -615,6 +643,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2390039530798066060, guid: a0dacc57b970e4946ab64ccefe5eddfe, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366429721027718910, guid: a0dacc57b970e4946ab64ccefe5eddfe, type: 3}
+      propertyPath: m_Size.z
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366429721027718910, guid: a0dacc57b970e4946ab64ccefe5eddfe, type: 3}
+      propertyPath: m_Center.x
+      value: -0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 6201044412803445818, guid: a0dacc57b970e4946ab64ccefe5eddfe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2774,7 +2814,7 @@ MonoBehaviour:
   scaleFactor: 6
   scaleStep: 0.5
   CourtPrefab: {fileID: 158413627}
-  defaultScaleFactorCourt: {x: 2, y: 1, z: 1}
+  defaultScaleFactorCourt: {x: 2, y: 1, z: 0.75}
   racketPrefab: {fileID: 1626392381}
   defaultScaleFactorRacket: 0.4
   ballPrefab: {fileID: 5799584800337431466, guid: 6af258e9b4d2d454bba3bfb26ab67a55, type: 3}
