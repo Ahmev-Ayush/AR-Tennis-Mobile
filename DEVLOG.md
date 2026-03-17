@@ -154,6 +154,7 @@
  
 **What I Did:**
 - Scores can be uploaded to created Leaderboard on Playfab
+- Leaderboard added in game BallShootingGameSceneExtension
 
 
 <!-- - Added Demo video clips and More Screenshots of the application -->
