@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 public class ScoreGameManager : MonoBehaviour
 {
     [Header("UI Elements")]
-    public TextMeshProUGUI scoreText; // Label to display current score
-    public TextMeshProUGUI missedText; // Label to display missed shots and remaining chances
+    public TextMeshProUGUI scoreText;     // Label to display current score
+    public TextMeshProUGUI missedText;    // Label to display missed shots and remaining chances
     public TextMeshProUGUI highScoreText; // Optional label to display the all-time high score 
 
     [Header("Game Stats")]
@@ -14,6 +14,7 @@ public class ScoreGameManager : MonoBehaviour
     public int missed = 0;
     public int maxMissed = 3; // Max misses before game over
     int highScore = 0;
+    public LeaderBoardManager leaderBoardManager;
 
     void Start()
     {
@@ -64,7 +65,7 @@ public class ScoreGameManager : MonoBehaviour
 
         if(missed == maxMissed - 1)
         {
-            missedText.color = Color.red; // Warning color for last chance
+            missedText.color = Color.red;   // Warning color for last chance
         }
         else
         {
@@ -74,8 +75,9 @@ public class ScoreGameManager : MonoBehaviour
 
     void GameOver()
     {
-        // Simple reset: reload the active scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("Game Over! Final Score: " + score);
+        leaderBoardManager.SendLeaderboard(score);                      // Send final score to leaderboard before resetting Scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);     // Simple reset: reload the active scene
     }
 
     // for reset of high score, can be called from a UI button
