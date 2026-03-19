@@ -1,13 +1,15 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ScoreGameManager : MonoBehaviour
 {
     [Header("UI Elements")]
     public TextMeshProUGUI scoreText;     // Label to display current score
     public TextMeshProUGUI missedText;    // Label to display missed shots and remaining chances
-    public TextMeshProUGUI highScoreText; // Optional label to display the all-time high score 
+    public TextMeshProUGUI highScoreText; // label to display the all-time high score 
+    public TextMeshProUGUI FinalScoreText;  // label to display "Game Over" score on the Game Over panel 
 
     [Header("Game Stats")]
     public int score = 0;
@@ -15,6 +17,8 @@ public class ScoreGameManager : MonoBehaviour
     public int maxMissed = 3; // Max misses before game over
     int highScore = 0;
     public LeaderBoardManager leaderBoardManager;
+    public BallLauncher ballLauncher; // Reference to the BallLauncher to stop shooting when game is over
+    public StartUIInBallShootingScene startUIManager; // Reference to the StartUI manager to show Game Over panel
 
     void Start()
     {
@@ -48,7 +52,9 @@ public class ScoreGameManager : MonoBehaviour
 
         if (missed >= maxMissed)
         {
-            GameOver(); // Reset the game when the player has missed too many times
+            ballLauncher.StopShooting(); // Stop spawning new balls when game is over
+
+            GameOver();                  // Reset the game when the player has missed too many times
         }
     }
 
@@ -77,7 +83,12 @@ public class ScoreGameManager : MonoBehaviour
     {
         Debug.Log("Game Over! Final Score: " + score);
         leaderBoardManager.SendLeaderboard(score);                      // Send final score to leaderboard before resetting Scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);     // Simple reset: reload the active scene
+
+        startUIManager.GameOverPanel.SetActive(true);                   // Show the Game Over panel
+        FinalScoreText.text = score.ToString();
+
+        StartCoroutine(ResetSceneAfterDelay(3f));                       // Wait a 3 seconds before resetting the scene
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);     // Simple reset: reload the active scene
     }
 
     // for reset of high score, can be called from a UI button
@@ -94,5 +105,16 @@ public class ScoreGameManager : MonoBehaviour
         UpdateUI();
 
         Debug.Log("High score reset.");
+    }
+
+    public bool continueToGameOver()
+    {
+        return true;
+    }
+
+    private IEnumerator ResetSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

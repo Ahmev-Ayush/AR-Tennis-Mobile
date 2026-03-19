@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 // using TMPro;
 
 // Launches pooled balls toward a target direction at a fixed cadence.
@@ -17,7 +18,7 @@ public class BallLauncher : MonoBehaviour
     public float maxSpreadAngleY = 4f;             // Maximum angle for random spread in degrees
     public float maxSpreadAngleX = 12f;            // Maximum angle for random spread in degrees
 
-    public BallShootingScriptableObjectScript DataContainer; // ScriptableObject for configurable parameters
+    public BallShootingScriptableObjectScript DataContainer; // ScriptableObject for configurable parameters (only to learn ScriptableObject usage in this project, not strictly necessary for functionality)
 
     // public TextMeshProUGUI debugText; // Optional UI element for displaying debug info in real-time
 
@@ -46,6 +47,11 @@ public class BallLauncher : MonoBehaviour
 
         // Start firing after a short delay and keep repeating on the interval.
         InvokeRepeating("SpawnBallNew", 2f, DataContainer.fireRate);
+    }
+
+    public void StopShooting()
+    {
+        CancelInvoke("SpawnBallNew");
     }
 
     // Default posture is sitting (12f). Press the button to toggle to standing (14f) and back.

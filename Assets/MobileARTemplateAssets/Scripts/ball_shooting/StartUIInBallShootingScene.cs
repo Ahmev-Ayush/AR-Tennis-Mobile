@@ -9,6 +9,7 @@ public class StartUIInBallShootingScene : MonoBehaviour
     public GameObject TutorialPanel;
     public GameObject TutorialPanel2;
     public GameObject LeaderboardPanel;
+    public GameObject GameOverPanel;
     public Button buttonToContinue;
 
 
@@ -21,6 +22,7 @@ public class StartUIInBallShootingScene : MonoBehaviour
         TutorialPanel2.SetActive(false);
         LeaderboardPanel.SetActive(false);
         buttonToContinue.gameObject.SetActive(false);
+        GameOverPanel.SetActive(false);
     }
 
     // Called by the 'Start' button on the Welcome Panel
