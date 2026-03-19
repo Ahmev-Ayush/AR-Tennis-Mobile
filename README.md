@@ -7,9 +7,18 @@ This is a fully playable **AR Tennis** mini-game where:
 - A tennis court anchors to the detected ground plane.
 - An automated ball launcher shoots physics-based balls at the player.
 - The player uses their phone as a racket (camera-tracked) to hit balls back.
-- **Features:** Live scoreboard, high-score persistence, video playback on screens, and reset functionality.
+- **Features:** Live scoreboard, PlayFab leaderboards for high-score persistence, video playback on screens, and reset functionality.
 
-It demonstrates advanced AR interaction, physics, camera tracking, and game logic integration to build a complete AR mini-game.
+It demonstrates advanced AR interaction, physics, camera tracking, and game logic integration to build a complete AR mini-game. The game leverages PlayFab for cloud-based improvements.
+
+## 🏆 PlayFab Integration
+This project integrates **PlayFab** for backend services, primarily to manage player statistics and leaderboards.
+- **Scripts:** located in `Assets/ScriptsPlayFab`
+  - `PlayFabLogin.cs`: Handles anonymous login using device ID.
+  - `LeaderboardManager.cs`: Submits scores to the PlayFab leaderboard.
+- **Usage:**
+  - The `BallShootingGameSceneExtension` Scene updates the high score to the PlayFab backend upon game over.
+  - Players are automatically logged in on start.
 
 ## 📂 Also See: Core AR Demos
 Beyond the game, this project safeguards a suite of focused demos for learning specific AR Foundation features:
@@ -46,13 +55,16 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 
 - **6daysScene** – A dedicated scene for placing a high-fidelity car model (Lamborghini) on detected planes, showcasing refined placement logic.
 
+🎬 [Watch video →](./Demo_Videos_and_Images/lamboVideoWithAudio_video.mp4)
+
 - **BallShootingGameScene** ⭐ — **Best scene in the repo.** A fully playable AR tennis mini-game: the court anchors to a real-world plane, balls fire automatically, and you hit them with a racket that follows your camera.
   - **Features:** Live scoreboard, high-score persistence, reset functionality.
+  - **Integrated with PlayFab** for online leaderboard and player statistics.
   - **Recent Updates:** Integrated video playback on court screens (via URL), improved court orientation logic, and experimental standing/sitting posture adjustments.
 
-<img src="Demo_Videos_and_Images/BallShooting_screenshot1.png" width="300" alt="Ball Shooting Screenshot 1"> <img src="Demo_Videos_and_Images/BallShooting_screenshot1.jpeg" width="300" alt="Ball Shooting Screenshot 2">
+<img src="Demo_Videos_and_Images/BallShooting_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/BallShooting_screenshot1.png" width="300" alt="App Screenshot">
 
-🎬 **[Watch Ball Shooting gameplay →](./Demo_Videos_and_Images/BallShooting_video.mp4)**
+🎬 [Watch video →](./Demo_Videos_and_Images/BallShooting_video.mp4)
 
 ## Note: View demo videos: [Demo_Videos_and_Images](./Demo_Videos_and_Images)
 
@@ -64,7 +76,9 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 │   ├── 📂 MobileARTemplateAssets/
 │   │   ├── 📂 Materials/
 │   │   ├── 📂 Prefabs/
-│   │   ├── 📂 Scripts/     ← All scripts used in the project are here
+│   │   └──  📂 Scripts/     ← All scripts used in the project are here
+│   │       ├──📂 6daysSceneScripts/
+│   │       ├──📂 ball_shooting/
 │   │   ├── 📂 Shaders/
 │   │   ├── 📂 Tutorial/
 │   │   └── 📂 UI/
@@ -77,6 +91,8 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 │   ├── 📂 Scenes/
 │   ├── 📂 TextMesh Pro/
 │   ├── 📂 XR/
+│   ├── 📂 PlayFabEditorExtensions/
+│   ├── 📂 ScriptsPlayFab/
 │   └── 📂 models/
 ├── 📂 Packages/
 ├── 📂 ProjectSettings/
