@@ -161,6 +161,7 @@
  
 **What I Did:**
 - Fixes for leaderboard to display score on android
+- video ad playing added for future use
 
 <!-- - Added Demo video clips and More Screenshots of the application -->
 

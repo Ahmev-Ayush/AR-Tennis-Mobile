@@ -1,9 +1,12 @@
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
+using System;
 
 public class PlayFabLogin : MonoBehaviour
 {
+    public static event Action OnLoginSuccessEvent;
+
     public void Start()
     {
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId)){
@@ -28,6 +31,9 @@ public class PlayFabLogin : MonoBehaviour
         Debug.Log("Congratulations, you made your first successful API call!");
         // Debug.Log("You can use the PlayFab ID " + result.PlayFabId + " to send your first PlayStream event, or to get data from the Player Data API.");
         // Debug.Log("request: " + SystemInfo.deviceUniqueIdentifier);
+        
+        // Notify other scripts that we are logged in
+        OnLoginSuccessEvent?.Invoke();
     }
 
     private void OnLoginFailure(PlayFabError error)

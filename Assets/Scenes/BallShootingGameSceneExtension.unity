@@ -737,6 +737,10 @@ PrefabInstance:
       propertyPath: targetDirection
       value: 
       objectReference: {fileID: 826324971}
+    - target: {fileID: 6383738017944109312, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_Url
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6594378548669137416, guid: aaca9f8717950314a99a24355727b318, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -796,7 +800,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5093471420215873722, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2093464104}
   m_SourcePrefab: {fileID: 100100000, guid: aaca9f8717950314a99a24355727b318, type: 3}
 --- !u!1 &343013353
 GameObject:
@@ -5964,6 +5971,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066517419}
   m_CullTransparentMesh: 1
+--- !u!1 &2093464098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5093471420215873722, guid: aaca9f8717950314a99a24355727b318, type: 3}
+  m_PrefabInstance: {fileID: 341755700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2093464104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093464098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0226a2406f2f9640bc8c98dafa8b96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  videoURL: https://github.com/Ahmev-Ayush/AR-Tennis-Mobile/blob/master/Demo_Videos_and_Images/video.txt
 --- !u!1 &2104737696
 GameObject:
   m_ObjectHideFlags: 0
