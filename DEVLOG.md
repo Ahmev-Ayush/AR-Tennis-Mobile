@@ -157,10 +157,10 @@
 - Leaderboard added in game BallShootingGameSceneExtension
 
 
-## 🗓️ 19-03-2026 
+## 🗓️ 21-03-2026 
  
 **What I Did:**
-- 
+- Fixes for leaderboard to display score on android
 
 <!-- - Added Demo video clips and More Screenshots of the application -->
 

@@ -52,17 +52,14 @@ public class LeaderBoardManager : MonoBehaviour
     void OnGetLeaderboard(GetLeaderboardResult result)
     {
         Debug.Log("Top 10 Leaderboard: ");
-        foreach(var entry in result.Leaderboard)
+        // Clear existing leaderboard entries
+        foreach (Transform child in parent)
         {
-            // if entry not zero then clear the leaderboard
-                if (entry.StatValue != 0)
-                {
-                    // Clear existing leaderboard entries
-                    foreach (Transform child in parent)
-                    {
-                        Destroy(child.gameObject);
-                    }
-                }
+            Destroy(child.gameObject);
+        }
+        foreach (var entry in result.Leaderboard)
+        {
+
             GameObject newEntry = Instantiate(DataPrefab, parent);
             Text[] texts = newEntry.GetComponentsInChildren<Text>();
             texts[0].text = (entry.Position + 1).ToString(); // Rank

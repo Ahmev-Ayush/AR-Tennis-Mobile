@@ -11,11 +11,16 @@ public class PlayFabLogin : MonoBehaviour
             Please change the titleId below to your own titleId from PlayFab Game Manager.
             If you have already set the value in the Editor Extensions, this can be skipped.
             */
-            PlayFabSettings.staticSettings.TitleId = "42";
+            PlayFabSettings.staticSettings.TitleId = "42"; // title id, replace with title id from PlayFab Game Manager
         }
-        // var request = new LoginWithCustomIDRequest { CustomId = "GettingStartedGuide", CreateAccount = true};
-        var request = new LoginWithCustomIDRequest { CustomId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true};
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+        #if UNITY_ANDROID && !UNITY_EDITOR // runs only on android devices
+            var request = new LoginWithAndroidDeviceIDRequest{ AndroidDeviceId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true};
+            PlayFabClientAPI.LoginWithAndroidDeviceID(request, OnLoginSuccess, OnLoginFailure);
+        #else // runs on editor or windows device
+            // var request = new LoginWithCustomIDRequest { CustomId = "GettingStartedGuide", CreateAccount = true};
+            var request = new LoginWithCustomIDRequest { CustomId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true};
+            PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+        #endif
     }
 
     private void OnLoginSuccess(LoginResult result)
