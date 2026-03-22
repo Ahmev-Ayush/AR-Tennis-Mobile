@@ -10,6 +10,7 @@ public class StartUIInBallShootingScene : MonoBehaviour
     public GameObject TutorialPanel2;
     public GameObject LeaderboardPanel;
     public GameObject GameOverPanel;
+    public GameObject SettingPanel;
     public Button buttonToContinue;
 
 
@@ -23,6 +24,7 @@ public class StartUIInBallShootingScene : MonoBehaviour
         LeaderboardPanel.SetActive(false);
         buttonToContinue.gameObject.SetActive(false);
         GameOverPanel.SetActive(false);
+        SettingPanel.SetActive(false);
     }
 
     // Called by the 'Start' button on the Welcome Panel
@@ -52,6 +54,16 @@ public class StartUIInBallShootingScene : MonoBehaviour
     {
         adjustPanel.SetActive(true);
         LeaderboardPanel.SetActive(false);
+    }
+
+    public void settingButton()
+    {
+        SettingPanel.SetActive(true);
+    }
+
+    public void closeSettingPanel()
+    {
+        SettingPanel.SetActive(false);
     }
 
     // Called by the 'Done' button on the Adjust Panel

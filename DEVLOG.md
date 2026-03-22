@@ -162,6 +162,15 @@
 **What I Did:**
 - Fixes for leaderboard to display score on android
 - video ad playing added for future use
+- importing ui elements created using Google Stitch
+- (Build version 6.0.0)
+
+## 🗓️ 22-03-2026 
+ 
+**What I Did:**
+- finishing touch to all ui elements using Google Stitch elements
+- added input field for taking name as input (PlayFab Display Name)
+- (Build Version 6.1.0)
 
 <!-- - Added Demo video clips and More Screenshots of the application -->
 

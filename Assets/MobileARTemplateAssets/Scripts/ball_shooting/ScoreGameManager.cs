@@ -2,9 +2,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.XR.ARFoundation;
 
 public class ScoreGameManager : MonoBehaviour
 {
+    [SerializeField] private ARSession arSession;
     [Header("UI Elements")]
     public TextMeshProUGUI scoreText;     // Label to display current score
     public TextMeshProUGUI missedText;    // Label to display missed shots and remaining chances
@@ -115,6 +117,7 @@ public class ScoreGameManager : MonoBehaviour
     private IEnumerator ResetSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        arSession.Reset(); // Reset the AR session to clear tracked planes and anchors
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

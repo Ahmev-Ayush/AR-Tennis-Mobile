@@ -63,7 +63,8 @@ public class LeaderBoardManager : MonoBehaviour
             GameObject newEntry = Instantiate(DataPrefab, parent);
             Text[] texts = newEntry.GetComponentsInChildren<Text>();
             texts[0].text = (entry.Position + 1).ToString(); // Rank
-            texts[1].text = entry.PlayFabId;                 // Player ID
+            // texts[1].text = entry.PlayFabId;              // Player ID
+            texts[1].text = !string.IsNullOrEmpty(entry.DisplayName) ? entry.DisplayName : "Anonymous"; // Display Name or fallback to "Anonymous"
             texts[2].text = entry.StatValue.ToString();      // Score
             Debug.Log(string.Format("Rank: {0}, PlayFabId: {1}, Score: {2}", entry.Position, entry.PlayFabId, entry.StatValue));
         }

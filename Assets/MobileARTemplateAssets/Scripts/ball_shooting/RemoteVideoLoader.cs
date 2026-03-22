@@ -65,11 +65,7 @@ public class RemoteVideoLoader : MonoBehaviour
             if (result.Data.ContainsKey("playbackSpeed"))
                 float.TryParse(result.Data["playbackSpeed"], out config.playbackSpeed);
 
-            // 2. Fallback: If you decide to use a JSON string in a key like "MyVideoSettings"
-            // if (result.Data.ContainsKey("MyVideoSettings"))
-            // {
-            //     config = JsonUtility.FromJson<VideoConfig>(result.Data["MyVideoSettings"]);
-            // }
+
 
             if (!string.IsNullOrEmpty(config.videoUrl))
             {
