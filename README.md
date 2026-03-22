@@ -7,18 +7,27 @@ This is a fully playable **AR Tennis** mini-game where:
 - A tennis court anchors to the detected ground plane.
 - An automated ball launcher shoots physics-based balls at the player.
 - The player uses their phone as a racket (camera-tracked) to hit balls back.
-- **Features:** Live scoreboard, PlayFab leaderboards for high-score persistence, video playback on screens, and reset functionality.
+- **Features:**
+  - **Live Scoreboard:** Animated in-game scoreboard (Diegetic UI) that tracks hits, misses, and high score.
+  - **PlayFab Integration:** Cloud-backed leaderboards, player authentication, and remote config.
+  - **Video Playback:** Remote video loading for billboards/ads within the AR scene.
+  - **Tutorial Mode:** A guided introduction for new players to learn the game mechanics.
+  - **Customization:** Player can input a **Display Name** for the global leaderboard.
+  - **UI Overhaul:** Polished UI elements imported using Google Stitch for a cohesive look.
 
 It demonstrates advanced AR interaction, physics, camera tracking, and game logic integration to build a complete AR mini-game. The game leverages PlayFab for cloud-based improvements.
 
 ## 🏆 PlayFab Integration
 This project integrates **PlayFab** for backend services, primarily to manage player statistics and leaderboards.
 - **Scripts:** located in `Assets/ScriptsPlayFab`
-  - `PlayFabLogin.cs`: Handles anonymous login using device ID.
-  - `LeaderboardManager.cs`: Submits scores to the PlayFab leaderboard.
+  - `PlayFabLogin.cs`: Handles anonymous login using device ID and manages display name updates.
+  - `LeaderboardManager.cs`: Submits scores to the PlayFab leaderboard and retrieves top player rankings.
 - **Usage:**
   - The `BallShootingGameSceneExtension` Scene updates the high score to the PlayFab backend upon game over.
   - Players are automatically logged in on start.
+  - **Display Name Input:** Players can entering a custom name to appear on the leaderboard.
+  - **Leaderboard Display:** The top scores are fetched and displayed in-game on Android devices.
+  - **Remote Video:** The billboard in the scene plays video content from a remote URL (administered via PlayFab TitleData).
 
 ## 📂 Also See: Core AR Demos
 Beyond the game, this project safeguards a suite of focused demos for learning specific AR Foundation features:
@@ -68,6 +77,25 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 
 ## Note: View demo videos: [Demo_Videos_and_Images](./Demo_Videos_and_Images)
 
+## 🧠 Technical Learnings & Challenges
+This project served as a deep dive into advanced AR development. Key takeaways include:
+
+1. **Backend Integration (PlayFab):**
+   - Learned to implement **Cloud Scripting** concepts using PlayFab for leaderboards and player authentication.
+   - Handled asynchronous data fetching to display global high scores in real-time on Android devices.
+
+2. **AR Physics & Mathematics:**
+   - Implemented complex **projectile motion algorithms** to calculate ball trajectories that align with real-world physics and camera depth.
+   - Solved challenges with **coordinate space mapping** between the AR Session space and game world objects.
+
+3. **Optimization Techniques:**
+   - Reduced APK size significantly by switching from local video assets to **remote URL streaming** for in-game billboards/ads.
+   - Managed **AR Plane visibility** toggling to improve immersion (hiding planes after game start).
+
+4. **UI/UX in AR:**
+   - Moved from standard screen-overlay UI to **Diegetic UI** (in-world scoreboards) to maintain player immersion.
+   - Integrated polished UI assets using **Google Stitch** (Figma to Unity workflow) to create a professional look and feel.
+
 ## Project Structure
 ```text
 📦 YourProject/
@@ -112,7 +140,7 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 - Optional: TextMeshPro Essentials imported (already configured in this project) for the diagnostics overlay.
 
 ## Quick Start
-1. Clone the repository (`git clone https://github.com/Ahmev-Ayush/AR-Learning.git`) or download the ZIP into a local folder.
+1. Clone the repository (`git clone https://github.com/Ahmev-Ayush/AR-Tennis-Mobile.git`) or download the ZIP into a local folder.
 2. Open Unity Hub → **Open** → select `Plane Detection/Plane Detection.sln` or the folder root.
 3. When prompted, install Unity 6000.2.6f2; allow the Editor to update the project.
 4. In **Build Settings**, switch the platform to **Android**  and click **Apply**.
@@ -162,6 +190,11 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 | **Scene Management** | Wiring multi-scene navigation with `changeScene.cs` and `GoalManager.cs` |
 | **Video Playback** | Integrating `VideoPlayer` to stream video textures on 3D objects via URL (`VideoPlayerController.cs`) |
 | **Spatial UI** | Implementing world-space UI (e.g., the scoreboard in `BallShootingGameSceneExtension`) that exists physically in the AR environment instead of a screen overlay |
+| **Backend (PlayFab)** | Implementing **Cloud Scripting** and async data fetching for global leaderboards and player auth (Logins). |
+| **UI/UX & Workflow** | Transitioning to **Diegetic UI** (world-space) and using **Google Stitch** (Figma to Unity) for polished asset integration. |
+| **Optimization** | Reducing APK size by streaming video textures via **Remote URLs**; managing plane visibility for immersion. |
+
+
 
 
 
