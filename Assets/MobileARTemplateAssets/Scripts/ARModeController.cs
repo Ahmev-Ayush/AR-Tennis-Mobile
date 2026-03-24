@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.InputSystem; // REQUIRED FOR MOUSE
+using UnityEngine.InputSystem; 
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
-using System;
 
 public class ARModeController : MonoBehaviour
 {

@@ -10,7 +10,7 @@ public class tennisBall : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerRacket"))
         {
             hasBeenHitByPlayer = true;
-            Debug.Log("Ball hit by player!");
+            // Debug.Log("Ball hit by player!");
             if(AudioManagerScript.Instance != null)
             {
                 AudioManagerScript.Instance.Play("RacketHitBall");

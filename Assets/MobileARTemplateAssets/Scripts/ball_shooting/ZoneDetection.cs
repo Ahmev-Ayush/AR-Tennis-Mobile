@@ -15,12 +15,12 @@ public class ZoneDetection : MonoBehaviour
             if(isScoreZone && ball.hasBeenHitByPlayer)
             {
                 gameManager.AddPoint();
-                Debug.Log("Ball entered score zone. Score: " + gameManager.score);
+                // Debug.Log("Ball entered score zone. Score: " + gameManager.score);
             }
             else if (!isScoreZone)
             {
                 gameManager.BallMissed();
-                Debug.Log("Ball entered miss zone. Missed: " + gameManager.missed);
+                // Debug.Log("Ball entered miss zone. Missed: " + gameManager.missed);
             }
 
             Destroy(other.gameObject);

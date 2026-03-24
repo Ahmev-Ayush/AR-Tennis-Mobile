@@ -319,7 +319,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1183664472}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: prefabScalerForBallShooting, Assembly-CSharp
         m_MethodName: ScaleDown
         m_Mode: 1
@@ -509,7 +509,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1183664472}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: prefabScalerForBallShooting, Assembly-CSharp
         m_MethodName: ScaleUp
         m_Mode: 1
@@ -1115,9 +1115,45 @@ PrefabInstance:
       value: court
       objectReference: {fileID: 0}
     - target: {fileID: 5220768461090497536, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1011746201}
+    - target: {fileID: 5220768461090497536, guid: aaca9f8717950314a99a24355727b318, type: 3}
       propertyPath: targetDirection
       value: 
       objectReference: {fileID: 826324971}
+    - target: {fileID: 6260741227299443434, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260741227299443434, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260741227299443434, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260741227299443434, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260741227299443434, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.778
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260741227299443434, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7660445
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260741227299443434, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6427876
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260741227299443434, guid: aaca9f8717950314a99a24355727b318, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -80
+      objectReference: {fileID: 0}
     - target: {fileID: 6594378548669137416, guid: aaca9f8717950314a99a24355727b318, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1262,14 +1298,6 @@ PrefabInstance:
     - target: {fileID: 2390039530798066060, guid: a0dacc57b970e4946ab64ccefe5eddfe, type: 3}
       propertyPath: sounds.Array.data[0].volume
       value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4366429721027718910, guid: a0dacc57b970e4946ab64ccefe5eddfe, type: 3}
-      propertyPath: m_Size.z
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 4366429721027718910, guid: a0dacc57b970e4946ab64ccefe5eddfe, type: 3}
-      propertyPath: m_Center.x
-      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 6201044412803445818, guid: a0dacc57b970e4946ab64ccefe5eddfe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2951,7 +2979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aecff3244022f4280245e3b0f5bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayFabLogin
-  displayNameInput: {fileID: 0}
+  displayNameInput: {fileID: 1988778393}
 --- !u!4 &749121610
 Transform:
   m_ObjectHideFlags: 0
@@ -3745,8 +3773,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.001}
-  m_SizeDelta: {x: 0, y: -104}
+  m_AnchoredPosition: {x: 0, y: -2.800537}
+  m_SizeDelta: {x: 0, y: -202.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875222613
 MonoBehaviour:
@@ -4251,8 +4279,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50.303955}
+  m_SizeDelta: {x: 0, y: -309.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1027521584
 MonoBehaviour:
@@ -5013,9 +5041,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1183664470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cef450241fc00e4d9513a2558325248, type: 3}
+  m_Script: {fileID: 11500000, guid: 51c3d4a574bc0714f987d8912696bbc3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::prefabScalerForBallShooting
+  m_EditorClassIdentifier: Assembly-CSharp::PrefabScaleAndPlacementScript
   raycastManager: {fileID: 1158877165}
   planeManager: {fileID: 1158877166}
   scaleFactor: 6

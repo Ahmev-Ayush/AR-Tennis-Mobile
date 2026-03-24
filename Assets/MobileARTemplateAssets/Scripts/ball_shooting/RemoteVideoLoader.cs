@@ -25,7 +25,7 @@ public class RemoteVideoLoader : MonoBehaviour
         }
         else   
         {
-            Debug.Log("Waiting for PlayFab login...");
+            // Debug.Log("Waiting for PlayFab login...");
             PlayFabLogin.OnLoginSuccessEvent += LoadVideoSettings;
             // The += means: "When the event fires, run my LoadVideoSettings function
         }
@@ -43,7 +43,7 @@ public class RemoteVideoLoader : MonoBehaviour
         // Unsubscribe if we were subscribed, to avoid multiple calls if logic changes
         PlayFabLogin.OnLoginSuccessEvent -= LoadVideoSettings;
 
-        Debug.Log("Fetching Video Settings from PlayFab...");
+        // Debug.Log("Fetching Video Settings from PlayFab...");
 
         var request = new GetTitleDataRequest();
         PlayFabClientAPI.GetTitleData(request, OnDataReceived, OnError);
@@ -73,13 +73,13 @@ public class RemoteVideoLoader : MonoBehaviour
                 videoPlayer.isLooping = config.loopVideo;
                 videoPlayer.playbackSpeed = config.playbackSpeed;
                 videoPlayer.Play();
-                Debug.Log("Video Loaded from PlayFab: " + config.videoUrl);
+                // Debug.Log("Video Loaded from PlayFab: " + config.videoUrl);
             }
         }
     }
 
     void OnError(PlayFabError error)
     {
-        Debug.LogError("PlayFab Error: " + error.GenerateErrorReport());
+        // Debug.LogError("PlayFab Error: " + error.GenerateErrorReport());
     }
 }

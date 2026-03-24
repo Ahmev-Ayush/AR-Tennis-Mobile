@@ -92,7 +92,7 @@ This project served as a deep dive into advanced AR development. Key takeaways i
    - Solved challenges with **coordinate space mapping** between the AR Session space and game world objects.
 
 3. **Optimization Techniques:**
-   - Reduced APK size significantly by switching from local video assets to **remote URL streaming** for in-game billboards/ads.
+   - Reduced APK size significantly by switching from local video assets to **remote URL streaming** for in-game billboards/ads. 
    - Managed **AR Plane visibility** toggling to improve immersion (hiding planes after game start).
 
 4. **UI/UX in AR:**
@@ -195,7 +195,7 @@ This project served as a deep dive into advanced AR development. Key takeaways i
 | **Spatial UI** | Implementing world-space UI (e.g., the scoreboard in `BallShootingGameSceneExtension`) that exists physically in the AR environment instead of a screen overlay |
 | **Backend (PlayFab)** | Implementing **Cloud Scripting** and async data fetching for global leaderboards and player auth (Logins). |
 | **UI/UX & Workflow** | Transitioning to **Diegetic UI** (world-space) and using **Google Stitch** (Figma to Unity) for polished asset integration. |
-| **Optimization** | Reducing APK size by streaming video textures via **Remote URLs**; managing plane visibility for immersion. |
+| **Optimization** | Reducing APK size by streaming video textures via **Remote URLs**; managing plane visibility for immersion. Replacing Update() with alternative way to code for less cpu usage on android device |
 
 
 

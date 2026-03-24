@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 // using TMPro;
 
 // Launches pooled balls toward a target direction at a fixed cadence.
@@ -20,11 +19,15 @@ public class BallLauncher : MonoBehaviour
 
     public BallShootingScriptableObjectScript DataContainer; // ScriptableObject for configurable parameters (only to learn ScriptableObject usage in this project, not strictly necessary for functionality)
 
+    public ScoreGameManager gameManager; // Reference to the game manager (for increasing difficulty level)
+
     // public TextMeshProUGUI debugText; // Optional UI element for displaying debug info in real-time
 
     void Awake()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep; // Prevent screen dimming for mobile AR template
+        // QualitySettings.vSyncCount = 0; // Disable VSync to allow frame rate capping via Application.targetFrameRate
+        // Application.targetFrameRate = 30; // Cap frame rate to save battery on mobile devices
     }
 
 
@@ -118,7 +121,7 @@ public class BallLauncher : MonoBehaviour
 
         if (rb == null)
         {
-            Debug.LogError("Ball prefab is missing a Rigidbody", ball);
+            // Debug.LogError("Ball prefab is missing a Rigidbody", ball);
             return;
         }
 
@@ -135,14 +138,14 @@ public class BallLauncher : MonoBehaviour
 
         float distance     = Vector2.Distance(camHorizontal, objHorizontal);  // horizontal distance to camera
         float angle        = Random.Range(29.9f, 30.1f) * Mathf.Deg2Rad;      // random launch angle in radians
-        Debug.Log($"Calculated distance to camera: {distance}, vertical dist (plane→cam): {vd:F2}m, height {h}, using launch angle: {angle * Mathf.Rad2Deg} degrees");
+        // Debug.Log($"Calculated distance to camera: {distance}, vertical dist (plane→cam): {vd:F2}m, height {h}, using launch angle: {angle * Mathf.Rad2Deg} degrees");
 
         float dinominatorLength = 2 * (x0 - h - Mathf.Tan(angle) * distance) * Mathf.Pow(Mathf.Cos(angle), 2);
         float velocitySquared   = g * Mathf.Pow(distance, 2) / dinominatorLength;         // derived from projectile motion equations
 
         if (velocitySquared <= 0)
         {
-            Debug.LogError("Calculated non-positive velocity squared, cannot shoot ball.");
+            // Debug.LogError("Calculated non-positive velocity squared, cannot shoot ball.");
             return;
         }
 
@@ -153,8 +156,27 @@ public class BallLauncher : MonoBehaviour
         Vector3 rightAxis = - Vector3.Cross(Vector3.up, directionToCamera).normalized;
         Vector3 upAxis    =   Vector3.Cross(directionToCamera, rightAxis).normalized; 
 
+        
+        float randomYaw = Random.Range(-3.0f, 3.0f);
+
+        if(gameManager.score >= 5)
+        {
+            randomYaw = Random.Range(-3.6f, 3.6f);
+        }
+        else if(gameManager.score >= 10)
+        {
+            randomYaw = Random.Range(-4.0f, 4.0f);
+            angle        = Random.Range(29.5f, 30.5f) * Mathf.Deg2Rad;
+        }
+        else if(gameManager.score >= 15)
+        {
+            randomYaw = Random.Range(-4.5f, 4.5f);
+            angle     = Random.Range(28f, 33f) * Mathf.Deg2Rad;
+        }
+
+        Quaternion yaw    = Quaternion.AngleAxis(randomYaw,  upAxis);         // Random yaw
+        
         Quaternion pitch  = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, rightAxis);      // Random pitch
-        Quaternion yaw    = Quaternion.AngleAxis(Random.Range(-3.2f, 3.2f),  upAxis);         // Random yaw
 
 
         Vector3 finalShotDirection = yaw * pitch * shotDirection;

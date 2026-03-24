@@ -10,7 +10,8 @@ public class racketFollow : MonoBehaviour
     private Vector3 rotOffset = new Vector3(0f, 90f, -100);
 
     [Header("prefabScaleScript")]
-    public prefabScalerForBallShooting prefabScaleScript; // Reference to the prefabScalerForBallShooting script
+    // public prefabScalerForBallShooting prefabScaleScript; // Reference to the prefabScalerForBallShooting script // (REPLACED BY PrefabScaleAndPlacementScript.cs)
+    public PrefabScaleAndPlacementScript prefabScaleScript; // Reference to the new combined prefab scaling and placement script
     Vector3 a = new Vector3(0f, -0.133f, 0.23f);
     Vector3 b = new Vector3(0f, -0.6f, 1.2f);
 

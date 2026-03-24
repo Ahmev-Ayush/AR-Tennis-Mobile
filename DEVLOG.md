@@ -172,6 +172,15 @@
 - added input field for taking name as input (PlayFab Display Name)
 - (Build Version 6.1.0)
 
+
+## 🗓️ 24-03-2026 
+ 
+**What I Did:**
+- fixed the issue of detecting planes during game play which distracted the player
+- ar session reset with reset of BallShootingGameSceneExtension scene (AR Tennis Mobile)
+- (Build Version 6.1.0)
+- optimization of script for less cpu usage
+
 <!-- - Added Demo video clips and More Screenshots of the application -->
 
 

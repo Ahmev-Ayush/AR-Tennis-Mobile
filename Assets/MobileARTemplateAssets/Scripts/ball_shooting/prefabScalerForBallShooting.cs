@@ -5,6 +5,9 @@ using UnityEngine.XR.ARSubsystems;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
+// This script is replaced by PrefabScaleAndPlacementScript.cs, which combines prefab scaling and placement 
+// functionality into a single script for better organization and efficiency.
+
 public class prefabScalerForBallShooting : MonoBehaviour
 {
     public ARRaycastManager raycastManager; // Reference to the ARRaycastManager for plane detection
@@ -114,9 +117,14 @@ public class prefabScalerForBallShooting : MonoBehaviour
     // Utility function to set ALL detected planes active or inactive
     void SetAllPlanesActive(bool value)
     {
-        foreach(var plane in planeManager.trackables)
+        if (planeManager != null)
         {
-            plane.gameObject.SetActive(value);
+            planeManager.enabled = false; // Disable the plane manager to stop detecting new planes
+
+            foreach (var plane in planeManager.trackables)
+            {
+                plane.gameObject.SetActive(value); // Set each existing plane active or inactive
+            }
         }
     }
 

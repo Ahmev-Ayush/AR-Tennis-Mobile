@@ -83,7 +83,7 @@ public class ScoreGameManager : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("Game Over! Final Score: " + score);
+        // Debug.Log("Game Over! Final Score: " + score);
         leaderBoardManager.SendLeaderboard(score);                      // Send final score to leaderboard before resetting Scene
 
         startUIManager.GameOverPanel.SetActive(true);                   // Show the Game Over panel
@@ -106,7 +106,7 @@ public class ScoreGameManager : MonoBehaviour
         highScore = 0;
         UpdateUI();
 
-        Debug.Log("High score reset.");
+        // Debug.Log("High score reset.");
     }
 
     public bool continueToGameOver()

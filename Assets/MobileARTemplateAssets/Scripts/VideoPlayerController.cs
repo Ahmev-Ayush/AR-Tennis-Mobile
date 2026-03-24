@@ -24,19 +24,19 @@ public class VideoPlayerController : MonoBehaviour
         if(videoPlayer != null)
         {
             videoPlayer.Play(); // Play the video
-            Debug.Log("Video is playing.");
+            // Debug.Log("Video is playing.");
         }
     }
 
     public void PauseMyVideo()
     {
         videoPlayer.Pause(); // Pause the video
-        Debug.Log("Video is paused.");
+        // Debug.Log("Video is paused.");
     }
 
     void OnVideoPrepared(VideoPlayer vp)
     {
-        Debug.Log("Video is prepared and ready to play.");
+        // Debug.Log("Video is prepared and ready to play.");
         videoPlayer.Play(); // Automatically play the video once it's prepared
     }
 
@@ -47,7 +47,7 @@ public class VideoPlayerController : MonoBehaviour
         {
             // 0 is mute, 1 is full volume
             videoPlayer.SetDirectAudioVolume(0, volume); 
-            Debug.Log("Volume set to: " + volume);
+            // Debug.Log("Volume set to: " + volume);
         }
     }
 }
