@@ -47,20 +47,20 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 ## Demo Visuals
 - **ImageTrackingScene** – configured with a reference image library to test `ImageTrackingManager` and prefab spawning.
 
-<img src="Demo_Videos_and_Images/imageTracking_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/imageTracking_screenshot2.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/imageTracking_screenshot1.jpeg" width="200" alt="App Screenshot"> <img src="Demo_Videos_and_Images/imageTracking_screenshot2.jpeg" width="200" alt="App Screenshot">
 
 🎬 [Watch video 1 →](./Demo_Videos_and_Images/imageTracking_video1.mp4) | [Watch video 2 →](./Demo_Videos_and_Images/imageTracking_video2.mp4)
 
 - **PointCloudScene** – use to place a flying saucer prefab to interact with point cloud feature points.
 
-<img src="Demo_Videos_and_Images/PointCloud_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/PointCloud_screenshot2.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/PointCloud_screenshot1.jpeg" width="200" alt="App Screenshot"> <img src="Demo_Videos_and_Images/PointCloud_screenshot2.jpeg" width="200" alt="App Screenshot">
 
 🎬 [Watch video →](./Demo_Videos_and_Images/PointCloudScene_video.mp4)
 
 - **carScene** & **Scene_Dragon** – uses the car and dragon placement scripts to anchor a vehicle and dragon prefab on detected planes.
 
-<img src="Demo_Videos_and_Images/PlaneDetection_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/PlaneDetection_screenshot2.jpeg" width="300" alt="App Screenshot">
-<img src="Demo_Videos_and_Images/PlaneDetection_screenshot3.jpeg" width="300" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/PlaneDetection_screenshot1.jpeg" width="200" alt="App Screenshot"> <img src="Demo_Videos_and_Images/PlaneDetection_screenshot2.jpeg" width="200" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/PlaneDetection_screenshot3.jpeg" width="200" alt="App Screenshot">
 
 - **6daysScene** – A dedicated scene for placing a high-fidelity car model (Lamborghini) on detected planes, showcasing refined placement logic.
 
@@ -71,9 +71,12 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
   - **Integrated with PlayFab** for online leaderboard and player statistics.
   - **Recent Updates:** Integrated video playback on court screens (via URL), improved court orientation logic, and experimental standing/sitting posture adjustments.
 
-<img src="Demo_Videos_and_Images/BallShooting_screenshot1.jpeg" width="300" alt="App Screenshot"> <img src="Demo_Videos_and_Images/BallShooting_screenshot1.png" width="300" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/BallShooting_screenshot3.png" width="200" alt="App Screenshot"> <img src="Demo_Videos_and_Images/BallShooting_screenshot2.jpeg" width="200" alt="App Screenshot">
+<img src="Demo_Videos_and_Images/BallShooting_screenshot4.png" width="200" alt="App Screenshot"> 
+<img src="Demo_Videos_and_Images/BallShooting_screenshot6.png" width="200" alt="App Screenshot">
+🎬 [Watch video →](./Demo_Videos_and_Images/BallShooting_video1.mp4)
+🎬 [Watch video →](./Demo_Videos_and_Images/BallShooting_video2.mp4)
 
-🎬 [Watch video →](./Demo_Videos_and_Images/BallShooting_video.mp4)
 
 ## Note: View demo videos: [Demo_Videos_and_Images](./Demo_Videos_and_Images)
 
